@@ -26,6 +26,11 @@ public class TestaMetodos {
 		
 		System.out.println(contaDaLiana.saldo);
 		System.out.println(contaDoRenato.saldo);
+		
+		contaDoRenato.titular = "renato";
+		System.out.println(contaDoRenato.titular);
+		
+		System.out.println(contaDaLiana.titular);
 
 	}
 
