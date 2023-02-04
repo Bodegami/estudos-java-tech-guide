@@ -4,14 +4,28 @@ public class TestaMetodos {
 
 	public static void main(String[] args) {
 		
-		Conta conta = new Conta();
-		conta.saldo = 100;
-		conta.deposita(50);
-		System.out.println(conta.saldo);
+		Conta contaDoRenato = new Conta();
+		contaDoRenato.saldo = 100;
+		contaDoRenato.deposita(50);
+		System.out.println(contaDoRenato.saldo);
 		
-		boolean conseguiuRetirar = conta.saca(20);
-		System.out.println(conta.saldo);
+		boolean conseguiuRetirar = contaDoRenato.saca(20);
+		System.out.println(contaDoRenato.saldo);
 		System.out.println(conseguiuRetirar);
+		
+		Conta contaDaLiana = new Conta();
+		contaDaLiana.deposita(1000);
+		
+		boolean sucessoTransferencia = contaDaLiana.transfere(3000, contaDoRenato);
+		
+		if (sucessoTransferencia) {
+			System.out.println("transferencia com sucesso!");
+		} else {
+			System.out.println("faltou dinheiro!");
+		}
+		
+		System.out.println(contaDaLiana.saldo);
+		System.out.println(contaDoRenato.saldo);
 
 	}
 
