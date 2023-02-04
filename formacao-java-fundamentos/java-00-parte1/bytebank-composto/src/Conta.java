@@ -2,7 +2,7 @@
 
 public class Conta {
 	
-	double saldo = 100;
+	private double saldo;
 	int agencia;
 	int numero;
 	Cliente titular;
@@ -15,9 +15,9 @@ public class Conta {
 		if (this.saldo >= valor) {
 			this.saldo -= valor;
 			return true;
-		} 
-		
-		return false;
+		} else {
+			return false;
+		}
 	}
 	
 	public boolean transfere(double valor, Conta destino) {
@@ -27,5 +27,9 @@ public class Conta {
 		} 
 		
 		return false;
+	}
+	
+	public double pegaSaldo() {
+		return this.saldo;
 	}
 }
