@@ -3,17 +3,13 @@ public class TestaGetESet {
 
 	public static void main(String[] args) {
 		
-		Conta conta = new Conta();
-		//conta.numero = 1337;
+		Conta conta = new Conta(1337, 24226);
 
-		conta.setNumero(1337);
 		System.out.println(conta.getNumero());
 		
 		Cliente renato = new Cliente();
 		//conta.titular = renato;
 		renato.setNome("renato");
-		renato.setCpf(null);
-		renato.setProfissao(null);
 		
 		conta.setTitular(renato);
 		
