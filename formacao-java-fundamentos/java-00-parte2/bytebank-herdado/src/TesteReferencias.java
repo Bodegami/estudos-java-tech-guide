@@ -13,10 +13,14 @@ public class TesteReferencias {
 		EditorVideo ev = new EditorVideo();
 		ev.setSalario(2500.0);
 		
+		Designer d = new Designer();
+		d.setSalario(2000.0);
+		
 		ControleBonificacao controle = new ControleBonificacao();
 		controle.registra(g1);
 		controle.registra(f1);
 		controle.registra(ev);
+		controle.registra(d);
 		
 		System.out.println(controle.getSoma());
 
