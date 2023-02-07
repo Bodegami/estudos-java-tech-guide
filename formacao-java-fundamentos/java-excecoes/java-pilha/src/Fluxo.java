@@ -8,7 +8,13 @@ public class Fluxo {
 
     private static void metodo1() {
         System.out.println("Ini do metodo1");
-        metodo2();
+        try {
+        	metodo2();
+        }
+        catch (ArithmeticException ex) {
+			System.out.println(ex.getClass().getSimpleName());
+		}
+        
         System.out.println("Fim do metodo1");
     }
 
