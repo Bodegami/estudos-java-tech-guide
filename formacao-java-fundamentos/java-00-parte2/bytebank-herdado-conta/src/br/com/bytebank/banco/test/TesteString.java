@@ -49,7 +49,20 @@ public class TesteString {
 		System.out.println("stringVazioSemEspaco: " + stringVazioSemEspaco);
 		System.out.println("nomeContains: " + nomeContains);
 		
-
+		
+		/**
+		 *  ANALISANDO O System.out.println("alura"):
+		 * 
+		 * 
+		 * System:
+		 *   - classe, java.lang, acesso public
+		 * out:
+		 *   - atributo, public, referencia a objeto, static
+		 * println()
+		 *   - metodo, public, nao static, sobrecarga, nao joga excecoes do tipo checked 
+		 * 
+		 */
+		
 	}
 
 }
