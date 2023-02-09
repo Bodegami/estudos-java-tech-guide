@@ -9,7 +9,8 @@ public class Teste {
 
 	public static void main(String[] args) {
 		
-		ArrayList lista = new ArrayList();
+		//Generics -> utilizamos para tipificar o tipo (Conta) do arrayList
+		ArrayList<Conta> lista = new ArrayList<Conta>();
 		
 		Conta cc = new ContaCorrente(22, 11);
 		lista.add(cc);
@@ -19,7 +20,7 @@ public class Teste {
 		
 		System.out.println("Tamanho: " + lista.size());
 		
-		Object ref = (Conta) lista.get(0);
+		Conta ref = lista.get(0);
 		System.out.println(ref);
 		
 		lista.remove(0);
@@ -33,12 +34,14 @@ public class Teste {
 		lista.add(cc4);
 		
 		//Old form
-//		for (int i = 0; i <lista.size(); i++) {
-//			System.out.println(lista.get(i));
-//		}
+		for (int i = 0; i <lista.size(); i++) {
+			System.out.println(lista.get(i));
+		}
 		
-		for (Object obj : lista) {
-			System.out.println(obj);
+		System.out.println("-----------------------------");
+		
+		for (Conta conta : lista) {
+			System.out.println(conta);
 		}
 		
 	}
