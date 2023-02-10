@@ -12,7 +12,7 @@ import br.com.bytebank.banco.modelo.ContaPoupanca;
 
 //Código omitido
 
-public class Teste {
+public class TesteClasseAnonima {
 
 	public static void main(String[] args) {
 
