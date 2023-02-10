@@ -2,6 +2,7 @@ package br.com.bytebank.banco.test.util;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 import br.com.bytebank.banco.modelo.Conta;
 import br.com.bytebank.banco.modelo.ContaCorrente;
@@ -28,7 +29,8 @@ public class TesteArrayList {
 		//Generics -> utilizamos para tipificar o tipo (Conta) do arrayList
 		//ArrayList<Conta> lista = new ArrayList<Conta>();
 		
-		List<Conta> lista = new LinkedList<Conta>();
+		//List<Conta> lista = new LinkedList<Conta>();
+		List<Conta> lista = new Vector<Conta>(); //thread safe
 		
 		Conta cc = new ContaCorrente(22, 11);
 		lista.add(cc);
