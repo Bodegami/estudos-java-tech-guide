@@ -1,6 +1,7 @@
 package br.com.bytebank.banco.test.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -14,6 +15,19 @@ import br.com.bytebank.banco.modelo.ContaPoupanca;
 public class Teste {
 
 	public static void main(String[] args) {
+		
+		/**
+		 * A classe Conta foi alterada para agora implementar a classe Comparable,
+		 * além disso foi feita a sobrescrita do metodo compareTo, para que ele faça
+		 * a comparação pelo saldo da conta.
+		 * Utilizamos esta estrategia para aplicar a ordem natural de comparacao.
+		 * 
+		 * Outro ponto curioso é que, após aplicar as alterações acima, podemos chamar 
+		 * o metodo sort passando como argumento "null", dessa forma ele vai utilizar
+		 * a ordem natural de comparacao.
+		 * Ex: lista.sort(null);
+		 *  
+		 */
 
 		Conta cc1 = new ContaCorrente(22, 33);
 		Cliente clienteCC1 = new Cliente();
@@ -51,8 +65,15 @@ public class Teste {
 		
 		System.out.println("---------------------------------------");
 
-		TitularDaContaComparator comparator = new TitularDaContaComparator();
-		lista.sort(comparator);
+		
+		//TitularDaContaComparator comparator = new TitularDaContaComparator();
+		//lista.sort(comparator);
+		//lista.sort(new TitularDaContaComparator()); //Após java 8
+		
+		//ANtes do Java 8
+		//Collections.sort(lista, new TitularDaContaComparator());
+		Collections.sort(lista);
+		//Collections.reverse(lista);
 		
 		for (Conta conta : lista) {
 			System.out.println(conta + ", " + conta.getTitular().getNome());

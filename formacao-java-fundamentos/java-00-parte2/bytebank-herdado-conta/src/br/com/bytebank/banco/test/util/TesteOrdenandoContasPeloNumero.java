@@ -34,12 +34,13 @@ public class TesteOrdenandoContasPeloNumero {
 				System.out.println(conta);
 			}
             
-            NumeroDaContaComparator comparator = new NumeroDaContaComparator();
+            //NumeroDaContaComparator comparator = new NumeroDaContaComparator();
+            //lista.sort(comparator);
+            
+            lista.sort(new NumeroDaContaComparator());
             
             System.out.println("--------------------------------------");
-            
-            lista.sort(comparator);
-            
+                                    
             for (Conta conta : lista) {
 				System.out.println(conta);
 			}
@@ -53,19 +54,27 @@ class NumeroDaContaComparator implements Comparator<Conta> {
 	@Override
 	public int compare(Conta c1, Conta c2) {
 
-		//If ternario
-		//return (c1.getNumero() < c2.getNumero()) ? -1 
-		//		: (c1.getNumero() > c2.getNumero()) ? 1 : 0;
+// If ternario:
+//		return (c1.getNumero() < c2.getNumero()) ? -1 
+//				: (c1.getNumero() > c2.getNumero()) ? 1 : 0;
 		
-		if (c1.getNumero() < c2.getNumero()) {
-			return -1;
-		}
+// If tradicional:
+//		if (c1.getNumero() < c2.getNumero()) {
+//			return -1;
+//		}
+//		
+//		if (c1.getNumero() > c2.getNumero()) {
+//			return 1;
+//		}
+//		
+//		return 0;
 		
-		if (c1.getNumero() > c2.getNumero()) {
-			return 1;
-		}
+// forma simplificada:
+//		return c1.getNumero() - c2.getNumero();
 		
-		return 0;
+// forma elegante:
+		return Integer.compare(c1.getNumero(), c2.getNumero());
+		
 	}
 	
 }
