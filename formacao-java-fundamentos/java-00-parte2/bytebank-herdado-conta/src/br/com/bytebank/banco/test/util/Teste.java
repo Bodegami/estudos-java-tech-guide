@@ -13,10 +13,27 @@ public class Teste {
 		//As interfaces só aceitam referencias. Quando passamos um tipo primitivo, por de baixo dos
 		//dos panos ela usa a referencia (Wrapper) deste tipo
 		//Ex: List<int> numero = new ArrayList<>(); -> não compila pois a interface não aceita tipos primitivos
+		
 		int idade = 29;// Integer
-		Integer idadeRef = new Integer(29);
+		Integer idadeRef = Integer.valueOf(idade);//Autoboxing -> tranformacao do tipo primitivo para objeto
+		
+		System.out.println(idadeRef.doubleValue());
+		
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Integer.MIN_VALUE);
+		
+		System.out.println(Integer.SIZE);
+		System.out.println(Integer.BYTES);
+		
+		int valor = idadeRef.intValue();//Unboxing -> transformacao do objeto para tipo primitivo
+		String s = args[0];//"10"
+		//Integer numero = Integer.valueOf(s);
+		int numero = Integer.parseInt(s);
+		System.out.println(s);
+		
+		
 		List<Integer> numeros = new ArrayList<>();
-		numeros.add(29);//Autoboxing -> tranformacao do tipo primitivo para objeto
+		numeros.add(29);
 		
 		
 	}
