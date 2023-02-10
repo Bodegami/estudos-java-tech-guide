@@ -15,19 +15,6 @@ import br.com.bytebank.banco.modelo.ContaPoupanca;
 public class Teste {
 
 	public static void main(String[] args) {
-		
-		/**
-		 * A classe Conta foi alterada para agora implementar a classe Comparable,
-		 * além disso foi feita a sobrescrita do metodo compareTo, para que ele faça
-		 * a comparação pelo saldo da conta.
-		 * Utilizamos esta estrategia para aplicar a ordem natural de comparacao.
-		 * 
-		 * Outro ponto curioso é que, após aplicar as alterações acima, podemos chamar 
-		 * o metodo sort passando como argumento "null", dessa forma ele vai utilizar
-		 * a ordem natural de comparacao.
-		 * Ex: lista.sort(null);
-		 *  
-		 */
 
 		Conta cc1 = new ContaCorrente(22, 33);
 		Cliente clienteCC1 = new Cliente();
@@ -59,38 +46,63 @@ public class Teste {
 		lista.add(cc3);
 		lista.add(cc4);
 
-		for (Conta conta : lista) {
-			System.out.println(conta + ", " + conta.getTitular().getNome());
-		}
+		// NumeroDaContaComparator2 comparator = new NumeroDaContaComparator2();
+		// lista.sort(new NumeroDaContaComparator2());
 		
-		System.out.println("---------------------------------------");
+		/**
+		 * Utilizando o conceito de classe anonima, dessa forma ñ é preciso criar uma classe 
+		 * que implemente o Comparator.
+		 * Além disso, acessando a pasta "bin" do projeto onde são gerados os arquivos .class,
+		 * navegando até a pasta da classe atual, podemos ver que a classe anonima é representada
+		 * por $1 ou $2 e etc, variando conforme a quantidade de classes anonimas na classe atual.
+		 * 
+		 */
+		lista.sort(new Comparator<Conta>() {
 
+				@Override
+				public int compare(Conta c1, Conta c2) {
+	
+					return Integer.compare(c1.getNumero(), c2.getNumero());
+				}
+			}
+		);
 		
-		//TitularDaContaComparator comparator = new TitularDaContaComparator();
-		//lista.sort(comparator);
-		//lista.sort(new TitularDaContaComparator()); //Após java 8
-		
-		//ANtes do Java 8
-		//Collections.sort(lista, new TitularDaContaComparator());
-		Collections.sort(lista);
-		//Collections.reverse(lista);
-		
+		Comparator<Conta> comp = new Comparator<Conta>() {
+
+			@Override
+			public int compare(Conta c1, Conta c2) {
+
+				String nomeC1 = c1.getTitular().getNome();
+				String nomeC2 = c2.getTitular().getNome();
+				return nomeC1.compareTo(nomeC2);
+			}
+		};
+
 		for (Conta conta : lista) {
 			System.out.println(conta + ", " + conta.getTitular().getNome());
 		}
 
 	}
-
 }
 
-class TitularDaContaComparator implements Comparator<Conta> {
-
-	@Override
-	public int compare(Conta c1, Conta c2) {
-
-		String nomeC1 = c1.getTitular().getNome();
-		String nomeC2 = c2.getTitular().getNome();
-		
-		return nomeC1.compareTo(nomeC2);
-	}
-}
+// Function Objects -> objetos que encapsulam uma função
+//class NumeroDaContaComparator2 implements Comparator<Conta> {
+//
+//	@Override
+//	public int compare(Conta c1, Conta c2) {
+//
+//		return Integer.compare(c1.getNumero(), c2.getNumero());
+//	}
+//}
+//
+//class TitularDaContaComparator2 implements Comparator<Conta> {
+//
+//	@Override
+//	public int compare(Conta c1, Conta c2) {
+//
+//		String nomeC1 = c1.getTitular().getNome();
+//		String nomeC2 = c2.getTitular().getNome();
+//
+//		return nomeC1.compareTo(nomeC2);
+//	}
+//}
