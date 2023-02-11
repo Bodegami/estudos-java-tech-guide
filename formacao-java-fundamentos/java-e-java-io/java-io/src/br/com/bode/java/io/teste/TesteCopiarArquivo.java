@@ -18,13 +18,13 @@ public class TesteCopiarArquivo {
 		//Fluxo para rede
 		Socket socket = new Socket();
 		
-		InputStream fis = socket.getInputStream();
-		Reader isr = new InputStreamReader(fis);
-		BufferedReader br = new BufferedReader(isr);
-		
-		OutputStream fos = socket.getOutputStream();
-		Writer osw = new OutputStreamWriter(fos);
-		BufferedWriter bw = new BufferedWriter(osw);
+//		InputStream fis = socket.getInputStream();
+//		Reader isr = new InputStreamReader(fis);
+//		BufferedReader br = new BufferedReader(isr);
+//		
+//		OutputStream fos = socket.getOutputStream();
+//		Writer osw = new OutputStreamWriter(fos);
+//		BufferedWriter bw = new BufferedWriter(osw);
 		
 		
 		
