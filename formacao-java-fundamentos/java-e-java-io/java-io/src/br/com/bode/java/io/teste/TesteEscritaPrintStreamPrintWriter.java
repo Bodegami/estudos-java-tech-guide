@@ -2,6 +2,7 @@ package br.com.bode.java.io.teste;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 
 public class TesteEscritaPrintStreamPrintWriter {
 
@@ -14,7 +15,7 @@ public class TesteEscritaPrintStreamPrintWriter {
 //		BufferedWriter bw = new BufferedWriter(new FileWriter("lorem4.txt"));
 		
 //		PrintStream ps = new PrintStream("lorem5.txt");
-		PrintWriter ps = new PrintWriter("lorem5.txt");
+		PrintWriter ps = new PrintWriter("lorem6.txt", StandardCharsets.UTF_8);
 		
 		ps.println("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla aliquet porttitor lacus luctus accumsan tortor. Vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. At volutpat diam ut venenatis tellus in metus. Sed cras ornare arcu dui vivamus arcu felis. Aenean euismod elementum nisi quis. Tortor condimentum lacinia quis vel eros donec. Mattis molestie a iaculis at erat. Mi quis hendrerit dolor magna eget. Maecenas pharetra convallis posuere morbi leo urna molestie. Consequat nisl vel pretium lectus quam id. Sed cras ornare arcu dui.");
 		ps.println();

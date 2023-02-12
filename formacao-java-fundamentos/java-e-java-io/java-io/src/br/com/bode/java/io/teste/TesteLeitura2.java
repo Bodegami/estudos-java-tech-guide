@@ -1,7 +1,7 @@
 package br.com.bode.java.io.teste;
 
 import java.io.File;
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class TesteLeitura2 {
 
 	public static void main(String[] args) throws Exception {
 		
-		try (Scanner scanner = new Scanner(new File("contas.csv"))) {
+		try (Scanner scanner = new Scanner(new File("contas.csv"), StandardCharsets.UTF_8)) {
 			
 			while (scanner.hasNextLine()) {
 				
