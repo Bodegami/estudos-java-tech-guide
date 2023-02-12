@@ -10,13 +10,13 @@ public class TesteSerializacao {
 		
 //		String nome = "Renato Ferreira";
 		
-		//criando um objeto serializado
+		//serializando um objeto
 //		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("objeto.bin"));
 //		
 //		oos.writeObject(nome);
 //		oos.close();
 		
-		//lendo um objeto serializado
+		//deserializando um objeto
 		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("objeto.bin"));
 		String nome = (String) ois.readObject();
 		ois.close();
