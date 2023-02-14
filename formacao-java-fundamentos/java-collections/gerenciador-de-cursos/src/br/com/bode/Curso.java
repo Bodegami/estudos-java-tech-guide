@@ -11,6 +11,8 @@ public class Curso {
 	private String nome;
 	private String instrutor;
 	private List<Aula> aulas = new ArrayList<>();
+	//new LinkedHashSet<>(); -> O LinkedHashSet guarda a ordem de adição dos elementos
+	//new TreeSet()<>(); -> utiliza a estrutura "arvore rubro negra" e precisa que a classe implemente o Comparable
 	private Set<Aluno> alunos = new HashSet<>();
 	private int tempoTotalCurso;
 

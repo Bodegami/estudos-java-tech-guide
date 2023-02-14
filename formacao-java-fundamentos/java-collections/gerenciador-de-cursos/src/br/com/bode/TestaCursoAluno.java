@@ -1,5 +1,8 @@
 package br.com.bode;
 
+import java.util.Iterator;
+import java.util.Set;
+
 public class TestaCursoAluno {
 
 	public static void main(String[] args) {
@@ -25,6 +28,19 @@ public class TestaCursoAluno {
 		
 		System.out.println("O aluno " + a1 + " está matriculado?");
 		System.out.println(javaColecoes.estaMatriculado(a1));
+		
+		//Detalhe aqui é que após percorrer todos os elementos do "iterador", caso houvesse a necessidade
+		//de percorrer novamente, seria necessario criar um novo "alunos.iterator()"
+		System.out.println("Iterando sobre um conjunto em versoes anteriores ao Java 5: ");
+		Set<Aluno> alunos = javaColecoes.getAlunos();
+		Iterator<Aluno> iterador = alunos.iterator();
+		int count = 0;
+		while (iterador.hasNext()) {
+			
+			Aluno proximoAluno = iterador.next();
+			System.out.printf("Iterador %s: %s\n", count++, proximoAluno);
+		}
+		
 		
 		//Sobreescrevemos o metodo hashCode para que seja possivel validar se um elemento está no conjunto
 		Aluno turini = new Aluno("Rodrigo Turini", 24672);
