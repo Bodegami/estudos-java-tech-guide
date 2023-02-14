@@ -2,8 +2,11 @@ package br.com.bode;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Curso {
@@ -14,6 +17,9 @@ public class Curso {
 	//new LinkedHashSet<>(); -> O LinkedHashSet guarda a ordem de adição dos elementos
 	//new TreeSet()<>(); -> utiliza a estrutura "arvore rubro negra" e precisa que a classe implemente o Comparable
 	private Set<Aluno> alunos = new HashSet<>();
+	//podemos usar tb o LinkedHashMap para ter um mapa ordenado por ordem de adição
+	//podemos usar o Hashtable para Thread Safe
+	private Map<Integer, Aluno> matriculaParaAluno = new HashMap<>();
 	private int tempoTotalCurso;
 
 
@@ -68,11 +74,18 @@ public class Curso {
 
 	public void matricula(Aluno aluno) {
 		this.alunos.add(aluno);
-		
+		this.matriculaParaAluno.put(aluno.getMatricula(), aluno);
 	}
 
 	public boolean estaMatriculado(Aluno a1) {
 		return this.alunos.contains(a1);
+	}
+
+	public Aluno buscaMatriculado(int numero) {
+		if (!matriculaParaAluno.containsKey(numero)) {
+			throw new NoSuchElementException("aluno nao encontrado");
+		}
+		return matriculaParaAluno.get(numero);
 	}
 
 }
