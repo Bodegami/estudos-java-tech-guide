@@ -1,6 +1,6 @@
 package br.com.bode.tdd;
 
-public class CalculadoraTestes {
+public class CalculadoraTestesComMetodoMain {
 
 	public static void main(String[] args) {
 		
