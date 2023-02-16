@@ -29,7 +29,17 @@ public class Funcionario {
 	}
 
 	public void reajustarSalario(BigDecimal reajuste) {
-		this.salario = this.salario.add(reajuste).setScale(2, RoundingMode.HALF_UP);
+		this.salario = this.salario.add(reajuste);
+		arredondarSalario();
+	}
+
+	//Metodos privados são utilizados dentro da classe, logo eles não devem ser testados
+	//pois os metodos publicos que o utilizam já fazem esse teste.
+	//Mudar o modificador de visibilidade só p/ testar um metodo é uma má pratica
+	
+	
+	private void arredondarSalario() {
+		this.salario = this.salario.setScale(2, RoundingMode.HALF_UP);	
 	}
 
 }
