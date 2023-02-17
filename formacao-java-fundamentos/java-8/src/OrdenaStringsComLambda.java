@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -67,20 +66,6 @@ public class OrdenaStringsComLambda {
 		// Utilizando o lambda - 2º forma (executa apenas uma ação)
 		palavras.forEach(s -> System.out.println(s));
 
-	}
-
-}
-
-class ComparadorPorTamanho2 implements Comparator<String> {
-
-	@Override
-	public int compare(String s1, String s2) {
-		if (s1.length() < s2.length()) {
-			return -1;
-		} else if (s1.length() > s2.length()) {
-			return 1;
-		}
-		return 0;
 	}
 
 }
