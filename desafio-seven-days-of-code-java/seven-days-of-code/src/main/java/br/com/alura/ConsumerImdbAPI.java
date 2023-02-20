@@ -1,6 +1,8 @@
 package br.com.alura;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ConsumerImdbAPI {
 
@@ -8,39 +10,31 @@ public class ConsumerImdbAPI {
 
 		try {
 
-			ImdbClientAPI client = new ImdbClientAPI();
-			String json = client.doRequest();
+			String request = ImdbClientAPI.doRequest();
+			String[] parseMovies = ImdbClientAPI.parseMovies(request);
 
-//			String substring = json.substring(10);
-//			System.out.println(substring);
-//			String[] arrayFilmes = substring.split("},");
-//			for (int count = 0; count < arrayFilmes.length; count++) {
-//				System.out.printf("Posicao %d: %s\n", count, arrayFilmes[count]);
-//			}
-//			String filme = arrayFilmes[0];
-//			String[] filmeAtt = filme.split("\",");
-//			for (String att : filmeAtt) {
-//				System.out.println(att);
-//			}
+			List<Movie> movies = Stream.of(parseMovies).map(m -> new Movie(m)).collect(Collectors.toList());
 
-			String[] parseMovies = client.parseMovies(json);
-			List<String> parseTitles = client.parseTitles(parseMovies);
-			parseTitles.forEach(System.out::println);
+			System.out.println(movies.size());
+			movies.forEach(System.out::println);
 
 			System.out.println("\n------------------------END---------------------------\n");
 
-			List<String> parseUrlImages = client.parseUrlImages(parseMovies);
-			parseUrlImages.forEach(System.out::println);
+			movies.stream().map(m -> m.getTitle()).forEach(System.out::println);
 
 			System.out.println("\n------------------------END---------------------------\n");
 
-			List<String> parseRatings = client.parseRatings(parseMovies);
-			parseRatings.forEach(System.out::println);
+			movies.stream().map(m -> m.getUrlImage()).forEach(System.out::println);
 
 			System.out.println("\n------------------------END---------------------------\n");
 
-			List<String> parseYears = client.parseYears(parseMovies);
-			parseYears.forEach(System.out::println);
+			movies.stream().map(m -> m.getRating()).forEach(System.out::println);
+
+			System.out.println("\n------------------------END---------------------------\n");
+			
+			movies.stream().map(m -> m.getYear()).forEach(System.out::println);
+
+			System.out.println("\n------------------------END---------------------------\n");
 
 		} catch (Exception e) {
 			System.out.println("Something is wrong...");
