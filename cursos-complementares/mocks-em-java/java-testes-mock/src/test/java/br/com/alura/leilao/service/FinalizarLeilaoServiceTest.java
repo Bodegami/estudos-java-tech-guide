@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import br.com.alura.leilao.dao.LeilaoDao;
@@ -25,16 +27,24 @@ class FinalizarLeilaoServiceTest {
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 		this.service = new FinalizarLeilaoService(leilaoDao);
-
+		
+		
 	}
 
 	@Test
 	void deveriaFinalizarUmLeilao() {
-		// LeilaoDao leilaoDao = Mockito.mock(LeilaoDao.class);
-		// service = new FinalizarLeilaoService(leilaoDao);
-
 		List<Leilao> leiloes = leiloes();
+		
+		Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leiloes);
+		
 		service.finalizarLeiloesExpirados();
+		
+		Leilao leilao = leiloes.get(0);
+		Assertions.assertTrue(leilao.isFechado());
+		Assertions.assertEquals(new BigDecimal("900"), leilao.getLanceVencedor().getValor());
+		
+		//verifica se um metodo da classe mockada foi chamado
+		Mockito.verify(leilaoDao).salvar(leilao);
 
 	}
 
