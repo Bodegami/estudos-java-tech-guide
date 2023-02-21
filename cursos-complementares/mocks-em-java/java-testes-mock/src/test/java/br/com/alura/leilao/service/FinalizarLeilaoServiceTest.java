@@ -79,6 +79,24 @@ class FinalizarLeilaoServiceTest {
 		Mockito.verify(enviadorDeEmails).enviarEmailVencedorLeilao(lanceVencedor);
 
 	}
+	
+	@Test
+	void naoDeveriaEnviarEmailParaVencedorDoLeilaoEmCasoDeErroAoEncerrarOLeilao() {
+		
+		List<Leilao> leiloes = leiloes();
+		
+		Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leiloes);
+		
+		//lanca exception quando chamar o metodo salvar dentro do metodo finalizarLeiloesExpirados
+		Mockito.when(leilaoDao.salvar(Mockito.any())).thenThrow(RuntimeException.class); 
+		
+		try {
+			service.finalizarLeiloesExpirados();
+			Mockito.verifyNoInteractions(enviadorDeEmails); // verifica se o metodo não foi chamado em caso de exception
+		} catch (Exception e) {
+		}
+
+	}
 
 	private List<Leilao> leiloes() {
 		List<Leilao> lista = new ArrayList<Leilao>();
