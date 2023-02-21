@@ -23,16 +23,31 @@ class FinalizarLeilaoServiceTest {
 	@Mock
 	private LeilaoDao leilaoDao;
 
+	@Mock
+	private EnviadorDeEmails enviadorDeEmails;
+	
 	@BeforeEach
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		this.service = new FinalizarLeilaoService(leilaoDao);
-		
-		
+		this.service = new FinalizarLeilaoService(leilaoDao, enviadorDeEmails);
 	}
 
 	@Test
 	void deveriaFinalizarUmLeilao() {
+		
+		/**
+		 * O metodo finalizarLeiloesExpirados, internamente ele 
+		 * chama o metodo buscarLeiloesExpirados que retorna uma
+		 * lista.
+		 * Faz um laço chamando o metodo maiorLanceDadoNoLeilao
+		 * para cada leilao.
+		 * Depois chama o setLanceVencedor, chama o metodo fechar.
+		 * Depois chama o metodo salvar da classe LeilaoDao.
+		 * E por ultimo chama o metodo enviarEmails da classe 
+		 * EnviadorDeEmails que é uma dependencia do service.
+		 * 
+		 */
+		
 		List<Leilao> leiloes = leiloes();
 		
 		Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leiloes);
@@ -45,6 +60,23 @@ class FinalizarLeilaoServiceTest {
 		
 		//verifica se um metodo da classe mockada foi chamado
 		Mockito.verify(leilaoDao).salvar(leilao);
+
+	}
+	
+	@Test
+	void deveriaEnviarEmailParaVencedorDoLeilao() {
+		
+		List<Leilao> leiloes = leiloes();
+		
+		Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leiloes);
+		
+		service.finalizarLeiloesExpirados();
+		
+		Leilao leilao = leiloes.get(0);
+		Lance lanceVencedor = leilao.getLanceVencedor();
+		
+		//verifica se um metodo da classe mockada foi chamado
+		Mockito.verify(enviadorDeEmails).enviarEmailVencedorLeilao(lanceVencedor);
 
 	}
 
