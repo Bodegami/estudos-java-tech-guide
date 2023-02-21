@@ -72,6 +72,54 @@ class GeradorDePagamentoTest {
 		Assertions.assertEquals(vencedor.getUsuario(), pagamento.getUsuario());
 		Assertions.assertEquals(leilao, pagamento.getLeilao());
 	}
+	
+	@Test
+	void deveriaCriarPagamentoParaVencedorDoLeilaoAposDoisDiasQuandoForSabado() {
+		Leilao leilao = leilao();
+		Lance vencedor = leilao.getLanceVencedor();
+		
+		LocalDate data = LocalDate.of(2022, 12, 10);
+		Instant instant = data.atStartOfDay(ZoneId.systemDefault()).toInstant();
+
+		Mockito.when(clock.instant()).thenReturn(instant);
+		Mockito.when(clock.getZone()).thenReturn(ZoneId.systemDefault());
+		
+		gerador.gerarPagamento(vencedor);
+
+		Mockito.verify(pagamentoDao).salvar(captor.capture());
+
+		Pagamento pagamento = captor.getValue();
+
+		Assertions.assertEquals(data.plusDays(2), pagamento.getVencimento());
+		Assertions.assertEquals(vencedor.getValor(), pagamento.getValor());
+		Assertions.assertFalse(pagamento.getPago());
+		Assertions.assertEquals(vencedor.getUsuario(), pagamento.getUsuario());
+		Assertions.assertEquals(leilao, pagamento.getLeilao());
+	}
+	
+	@Test
+	void deveriaCriarPagamentoParaVencedorDoLeilaoAposUmDiaQuandoForDomingo() {
+		Leilao leilao = leilao();
+		Lance vencedor = leilao.getLanceVencedor();
+		
+		LocalDate data = LocalDate.of(2022, 12, 11);
+		Instant instant = data.atStartOfDay(ZoneId.systemDefault()).toInstant();
+
+		Mockito.when(clock.instant()).thenReturn(instant);
+		Mockito.when(clock.getZone()).thenReturn(ZoneId.systemDefault());
+		
+		gerador.gerarPagamento(vencedor);
+
+		Mockito.verify(pagamentoDao).salvar(captor.capture());
+
+		Pagamento pagamento = captor.getValue();
+
+		Assertions.assertEquals(data.plusDays(1), pagamento.getVencimento());
+		Assertions.assertEquals(vencedor.getValor(), pagamento.getValor());
+		Assertions.assertFalse(pagamento.getPago());
+		Assertions.assertEquals(vencedor.getUsuario(), pagamento.getUsuario());
+		Assertions.assertEquals(leilao, pagamento.getLeilao());
+	}
 
 	private Leilao leilao() {
 		Leilao leilao = new Leilao("Celular", new BigDecimal("500"), new Usuario("Fulano"));
