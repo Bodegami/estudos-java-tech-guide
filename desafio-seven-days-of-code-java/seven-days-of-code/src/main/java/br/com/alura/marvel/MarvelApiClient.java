@@ -1,20 +1,23 @@
-package br.com.alura;
+package br.com.alura.marvel;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
 import br.com.alura.contracts.APIClient;
 
-public class ImdbApiClient implements APIClient {
+public class MarvelApiClient implements APIClient {
 	
-	private String apikey;
+	private String publicApikey;
+	private String privateApikey;
 	
-	public ImdbApiClient(String apikey) {
-		this.apikey = getApiKey(apikey);
+	public MarvelApiClient(String publicApikey, String privateApikey) {
+		this.publicApikey = getApiKey(publicApikey);
+		this.privateApikey = getApiKey(privateApikey);
 	}
 
 	public String getBody() {
@@ -44,8 +47,10 @@ public class ImdbApiClient implements APIClient {
 		return optionalApikey.orElseThrow();
 	}
 	
-	private URI buildUrl() throws URISyntaxException {
-		return new URI("https://imdb-api.com/en/API/Top250Movies/" + this.apikey);
+	private URI buildUrl() throws URISyntaxException, NoSuchAlgorithmException {
+		long timestamp = System.currentTimeMillis();
+		String hashMd5 = HashUtils.getHashMd5(timestamp + this.privateApikey + this.publicApikey);
+		
+		return new URI("https://gateway.marvel.com:443/v1/public/series?ts=" + timestamp + "&apikey=" + this.publicApikey + "&hash=" + hashMd5);
 	}
-
 }

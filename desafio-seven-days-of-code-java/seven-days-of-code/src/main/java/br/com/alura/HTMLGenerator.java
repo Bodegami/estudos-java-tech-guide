@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
 
+import br.com.alura.contracts.Content;
+
 public class HTMLGenerator {
 
 	private Writer writer;
@@ -12,14 +14,14 @@ public class HTMLGenerator {
 		this.writer = writer;
 	}
 	
-	public void generate(List<Movie> movies) throws IOException {
+	public void generate(List<? extends Content> movies) throws IOException {
 
 		writer.append("<html>\n");
 		writer.append(createHeader());
 		writer.append("    <body>\n");
 		movies.forEach(m -> {
 			try {
-				writer.append("  " + createDivTemplateMovie(m));
+				writer.append("  " + createDivTemplate(m));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -42,7 +44,7 @@ public class HTMLGenerator {
 				""";
 	}
 	
-	private String createDivTemplateMovie(Movie movie) {
+	private String createDivTemplate(Content content) {
 			String template = """
 					<div class=\"card text-white bg-dark mb-3\" style=\"max-width: 18rem;\">
 						<h4 class=\"card-header\">%s</h4>
@@ -52,11 +54,11 @@ public class HTMLGenerator {
 						</div>
 					</div>
 			""";
-		return String.format(template, movie.getTitle(), 
-					movie.getUrlImage(), 
-					movie.getTitle(), 
-					movie.getRating(), 
-					movie.getYear());
+		return String.format(template, content.title(), 
+					content.urlImage(), 
+					content.title(), 
+					content.rating(), 
+					content.year());
 	}
 	
 }

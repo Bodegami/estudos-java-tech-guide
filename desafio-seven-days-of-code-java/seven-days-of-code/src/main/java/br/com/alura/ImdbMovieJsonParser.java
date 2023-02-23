@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ImdbMovieJsonParser {
+import br.com.alura.contracts.JsonParser;
+
+public class ImdbMovieJsonParser implements JsonParser {
 
 	private Matcher matcher;
 
@@ -24,7 +26,8 @@ public class ImdbMovieJsonParser {
 		return matcher;
 	}
 
-	public List<Movie> parseMovies(String json) {
+	@Override
+	public List<Movie> parse() {
 		String[] moviesArray = this.matcher.group(1).split("\\},\\{");
 		moviesArray[0] = moviesArray[0].substring(1);
 		int last = moviesArray.length - 1;

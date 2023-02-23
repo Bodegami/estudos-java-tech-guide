@@ -1,20 +1,19 @@
-package br.com.alura;
+package br.com.alura.marvel;
 
 import br.com.alura.contracts.Content;
 
-public class Movie implements Content {
+public class MarvelSerie implements Content {
 
 	private String title;
 	private String urlImage;
 	private String rating;
 	private String year;
 
-	public Movie(String json) {
-		String[] movieAttributesJson = json.split("\",\"");
-		this.title = movieAttributesJson[2].split(":\"")[1];
-		this.urlImage = movieAttributesJson[5].split(":\"")[1];
-		this.rating = movieAttributesJson[7].split(":\"")[1];
-		this.year = movieAttributesJson[4].split(":\"")[1];
+	public MarvelSerie(String json) {
+		this.title = json.split("title\":\"")[1].split("\"")[0].trim();
+		this.urlImage = json.split("resourceURI\":\"")[1].split("\"")[0].trim();
+		this.rating = json.split("rating\":\"")[1].split("\"")[0].trim();
+		this.year = json.split("startYear\":")[1].split(",")[0].trim();
 	}
 
 	@Override
@@ -35,7 +34,7 @@ public class Movie implements Content {
 
 	@Override
 	public String rating() {
-		return this.rating;
+		return (this.rating.isEmpty()) ? null : this.rating;
 	}
 
 	@Override
