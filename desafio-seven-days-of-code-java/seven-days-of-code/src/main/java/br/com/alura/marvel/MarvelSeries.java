@@ -11,10 +11,10 @@ public class MarvelSeries implements Content {
 	private String type;
 
 	public MarvelSeries(String json) {
-		//String url = json.split("urls\":")[1].split("url\":\"")[1].split("\"")[0].trim();
+		String rating = json.split("rating\":\"")[1].split("\"")[0].trim();
 		this.title = json.split("title\":\"")[1].split("\"")[0].trim();
-		this.urlImage = json.split("resourceURI\":\"")[1].split("\"")[0].trim();
-		this.rating = json.split("rating\":\"")[1].split("\"")[0].trim();
+		this.urlImage = MarvelSeriesJsonParser.getImage(json);
+		this.rating = (rating.isEmpty()) ? "none" : rating;
 		this.year = json.split("startYear\":")[1].split(",")[0].trim();
 		this.type = "Series";
 	}
@@ -38,7 +38,6 @@ public class MarvelSeries implements Content {
 	@Override
 	public String rating() {
 		return this.rating;
-		//return (this.rating.isEmpty()) ? null : this.rating;
 	}
 
 	@Override
