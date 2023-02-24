@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
 import br.com.alura.contracts.APIClient;
+import br.com.alura.utils.HashUtils;
 
 public class MarvelApiClient implements APIClient {
 	
@@ -50,7 +51,9 @@ public class MarvelApiClient implements APIClient {
 	private URI buildUrl() throws URISyntaxException, NoSuchAlgorithmException {
 		long timestamp = System.currentTimeMillis();
 		String hashMd5 = HashUtils.getHashMd5(timestamp + this.privateApikey + this.publicApikey);
-		
-		return new URI("https://gateway.marvel.com:443/v1/public/series?ts=" + timestamp + "&apikey=" + this.publicApikey + "&hash=" + hashMd5);
+		URI uri = new URI("https://gateway.marvel.com:443/v1/public/series?ts=" 
+							+ timestamp + "&apikey=" + this.publicApikey + "&hash=" + hashMd5);
+		System.out.println(uri.toString());
+		return uri;
 	}
 }

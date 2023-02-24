@@ -6,19 +6,19 @@ import java.util.stream.Stream;
 
 import br.com.alura.contracts.JsonParser;
 
-public class MarvelSerieJsonParser implements JsonParser {
+public class MarvelSeriesJsonParser implements JsonParser {
 	
 	private String json;
 	
-	public MarvelSerieJsonParser(String json) {
+	public MarvelSeriesJsonParser(String json) {
 		this.json = json;
 	}
 
 	@Override
-	public List<MarvelSerie> parse() {
+	public List<MarvelSeries> parse() {
 		String substring = this.json.split("results\":")[1];
 		String[] jsonSplit = substring.split("null\\},\\{");
-		return Stream.of(jsonSplit).map(MarvelSerie::new).collect(Collectors.toList());
+		return Stream.of(jsonSplit).map(MarvelSeries::new).collect(Collectors.toList());
 	}
 	
 //	private Matcher jsonValidator(String json) {

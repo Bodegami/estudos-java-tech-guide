@@ -1,4 +1,4 @@
-package br.com.alura;
+package br.com.alura.imdb;
 
 import java.util.List;
 import java.util.regex.Matcher;

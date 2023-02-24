@@ -1,4 +1,4 @@
-package br.com.alura;
+package br.com.alura.utils;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -49,13 +49,16 @@ public class HTMLGenerator {
 					<div class=\"card text-white bg-dark mb-3\" style=\"max-width: 18rem;\">
 						<h4 class=\"card-header\">%s</h4>
 						<div class=\"card-body\">
+							<p class=\"card-text mt-2\">%s</p>
 							<img class=\"card-img\" src=\"%s\" alt=\"%s\">
 							<p class=\"card-text mt-2\">Nota: %s - Ano: %s</p>
 						</div>
 					</div>
 			""";
-		return String.format(template, content.title(), 
-					content.urlImage(), 
+		return String.format(template, 
+					content.title(), 
+					content.type(),
+					content.urlImage(),
 					content.title(), 
 					content.rating(), 
 					content.year());

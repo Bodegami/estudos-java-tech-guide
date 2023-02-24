@@ -1,13 +1,14 @@
-package br.com.alura;
+package br.com.alura.imdb;
 
 import br.com.alura.contracts.Content;
 
-public class Movie implements Content {
+public class Movie implements Content, Comparable<Content> {
 
 	private String title;
 	private String urlImage;
 	private String rating;
 	private String year;
+	private String type;
 
 	public Movie(String json) {
 		String[] movieAttributesJson = json.split("\",\"");
@@ -15,12 +16,13 @@ public class Movie implements Content {
 		this.urlImage = movieAttributesJson[5].split(":\"")[1];
 		this.rating = movieAttributesJson[7].split(":\"")[1];
 		this.year = movieAttributesJson[4].split(":\"")[1];
+		this.type = "Movie";
 	}
 
 	@Override
 	public String toString() {
-		return "[Title: " + this.title + ", UrlImage: " + this.urlImage 
-				+ ", Rating: " + this.rating + ", Year: " + this.year + "]";
+		return "[Title: " + this.title + ", UrlImage: " + this.urlImage + ", Rating: " 
+				+ this.rating + ", Year: " + this.year + ", Type: " + this.type + "]";
 	}
 
 	@Override
@@ -41,6 +43,16 @@ public class Movie implements Content {
 	@Override
 	public String year() {
 		return this.year;
+	}
+	
+	@Override
+	public String type() {
+		return this.type;
+	}
+
+	@Override
+	public int compareTo(Content outro) {
+		return this.rating.compareTo(outro.rating());
 	}
 
 }

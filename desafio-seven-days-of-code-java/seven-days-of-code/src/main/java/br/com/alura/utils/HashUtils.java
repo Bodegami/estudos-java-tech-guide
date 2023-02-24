@@ -1,4 +1,4 @@
-package br.com.alura.marvel;
+package br.com.alura.utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
