@@ -12,9 +12,7 @@ import java.util.stream.Stream;
 import br.com.alura.contracts.Content;
 import br.com.alura.imdb.ImdbApiClient;
 import br.com.alura.imdb.ImdbMovieJsonParser;
-import br.com.alura.imdb.Movie;
 import br.com.alura.marvel.MarvelApiClient;
-import br.com.alura.marvel.MarvelSeries;
 import br.com.alura.marvel.MarvelSeriesJsonParser;
 import br.com.alura.utils.HTMLGenerator;
 
@@ -25,10 +23,10 @@ public class ConsumerMixedAPI {
 		try {
 			
 			String jsonMarvelApi = new MarvelApiClient("MARVEL_PUBLIC_APIKEY", "MARVEL_PRIVATE_APIKEY").getBody();
-			List<MarvelSeries> listMarvelContent = new MarvelSeriesJsonParser(jsonMarvelApi).parse();
+			List<? extends Content> listMarvelContent = new MarvelSeriesJsonParser(jsonMarvelApi).parse();
 			
 			String jsonImdbApi = new ImdbApiClient("IMDB_APIKEY").getBody();
-			List<Movie> listImdbContent = new ImdbMovieJsonParser(jsonImdbApi).parse();
+			List<? extends Content> listImdbContent = new ImdbMovieJsonParser(jsonImdbApi).parse();
 			
 			List<? extends Content> mixedList = Stream.of(listMarvelContent, listImdbContent)
 					.flatMap(Collection::stream)

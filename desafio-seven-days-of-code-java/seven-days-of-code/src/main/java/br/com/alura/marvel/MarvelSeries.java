@@ -2,7 +2,7 @@ package br.com.alura.marvel;
 
 import br.com.alura.contracts.Content;
 
-public class MarvelSeries implements Content, Comparable<Content> {
+public class MarvelSeries implements Content {
 
 	private String title;
 	private String urlImage;

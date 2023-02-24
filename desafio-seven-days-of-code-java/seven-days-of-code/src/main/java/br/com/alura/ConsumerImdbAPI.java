@@ -6,22 +6,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import br.com.alura.contracts.Content;
 import br.com.alura.contracts.JsonParser;
 import br.com.alura.imdb.ImdbApiClient;
 import br.com.alura.imdb.ImdbMovieJsonParser;
-import br.com.alura.imdb.Movie;
 import br.com.alura.utils.HTMLGenerator;
 
 public class ConsumerImdbAPI {
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
 		try {
 
 			String json = new ImdbApiClient("IMDB_APIKEY").getBody();
 			JsonParser jsonParser = new ImdbMovieJsonParser(json);
-			List<Movie> movies = (List<Movie>) jsonParser.parse();
+			List<? extends Content> movies = jsonParser.parse();
 			
 			System.out.println("\n------------------------API IMDB response:  ---------------------------\n");
 			System.out.println(json.toString());
@@ -65,7 +64,7 @@ public class ConsumerImdbAPI {
 			
 			System.out.println("\n------------------------All Movies Year Comparing method: ---------------------------\n");
 			System.out.println("Rating do maior para o menor");
-			Collections.sort(movies, Comparator.comparing(Movie::year));
+			Collections.sort(movies, Comparator.comparing(Content::year));
 			System.out.println(movies);
 
 			

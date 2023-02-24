@@ -7,15 +7,14 @@ import java.util.Comparator;
 import java.util.List;
 
 import br.com.alura.contracts.APIClient;
+import br.com.alura.contracts.Content;
 import br.com.alura.contracts.JsonParser;
 import br.com.alura.marvel.MarvelApiClient;
-import br.com.alura.marvel.MarvelSeries;
 import br.com.alura.marvel.MarvelSeriesJsonParser;
 import br.com.alura.utils.HTMLGenerator;
 
 public class ConsumerMarvelAPI {
 	
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		
 		try {
@@ -23,7 +22,7 @@ public class ConsumerMarvelAPI {
 			String json = marvelApiClient.getBody();
 			
 			JsonParser jsonParser = new MarvelSeriesJsonParser(json);
-			List<MarvelSeries> marvelSeriesList = (List<MarvelSeries>) jsonParser.parse();
+			List<? extends Content> marvelSeriesList = jsonParser.parse();
 			
 			
 			System.out.println("\n---------------------------API Marvel Series response: ------------------------------\n");
@@ -67,7 +66,7 @@ public class ConsumerMarvelAPI {
 			
 			System.out.println("\n------------------------All Movies Year Comparing method: ---------------------------\n");
 			System.out.println("Rating do maior para o menor");
-			Collections.sort(marvelSeriesList, Comparator.comparing(MarvelSeries::year));
+			Collections.sort(marvelSeriesList, Comparator.comparing(Content::year));
 			System.out.println(marvelSeriesList);
 			
 			

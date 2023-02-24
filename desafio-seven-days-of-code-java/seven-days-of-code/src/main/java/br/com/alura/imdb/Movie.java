@@ -2,7 +2,7 @@ package br.com.alura.imdb;
 
 import br.com.alura.contracts.Content;
 
-public class Movie implements Content, Comparable<Content> {
+public class Movie implements Content {
 
 	private String title;
 	private String urlImage;
