@@ -1,12 +1,14 @@
 
-1 - Single Responsability Principle
+1 - (S)ingle Responsability Principle
 	"Uma classe deveria ter apenas um único motivo para mudar"
 												-- Robert (Uncle Bob) Martin
 
-2 - Open Closed Principle
+2 - (O)pen Closed Principle
 	"Entidades de software (classes, modulos, funcoes, etc.) devem estar abertas para extensao, 
 	porem fechadas para modificacao"			
 										        -- Bertrand Meyer
 										        
-										        
-										           
+3 - (L)iskov Substitution Principle										        
+	"Se q(x) é propriedade demonstravel dos objetos x de tipo T, 
+	então q(y) deve ser verdadeiro para objetos y de tipo S, onde S é um subtipo de T."	
+												-- Barbara Liskov								           
