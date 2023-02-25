@@ -1,6 +1,7 @@
 # estudos-java-tech-guide
-Estudos do Alura Java tech guide: https://techguide.sh/pt-BR/path/java/
-[Techguide Java](TECHGUIDE.md)
+Estudos do Alura Java tech guide link: https://techguide.sh/pt-BR/path/java/
+
+File: [Techguide Java](TECHGUIDE.md)
 
 Primeira etapa:
 
