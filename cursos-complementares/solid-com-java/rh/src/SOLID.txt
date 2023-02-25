@@ -1,5 +1,12 @@
 
 1 - Single Responsability Principle
-
 	"Uma classe deveria ter apenas um único motivo para mudar"
-												-- Robert (Uncle Bob) Martin 
+												-- Robert (Uncle Bob) Martin
+
+2 - Open Closed Principle
+	"Entidades de software (classes, modulos, funcoes, etc.) devem estar abertas para extensao, 
+	porem fechadas para modificacao"			
+										        -- Bertrand Meyer
+										        
+										        
+										           
