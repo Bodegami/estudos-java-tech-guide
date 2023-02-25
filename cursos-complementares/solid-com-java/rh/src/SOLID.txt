@@ -1,0 +1,5 @@
+
+1 - Single Responsability Principle
+
+	"Uma classe deveria ter apenas um único motivo para mudar"
+												-- Robert (Uncle Bob) Martin 
