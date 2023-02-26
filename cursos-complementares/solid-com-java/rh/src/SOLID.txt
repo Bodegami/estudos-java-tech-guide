@@ -13,6 +13,10 @@
 	então q(y) deve ser verdadeiro para objetos y de tipo S, onde S é um subtipo de T."	
 												-- Barbara Liskov	
 												
+4 - (I)nterface Segregation Principle
+	"Uma classe não deveria ser forçada a depender de métodos que não utilizará."
+												-- Robert (Uncle Bob) Martin												
+												
 5 - (D)ependency Inversion Principle
 	"Abstrações não devem depender de implementações. Implementações devem depender de abstrações."
 												-- Robert (Uncle Bob) Martin							           
