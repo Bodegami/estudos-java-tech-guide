@@ -4,11 +4,15 @@
 												-- Robert (Uncle Bob) Martin
 
 2 - (O)pen Closed Principle
-	"Entidades de software (classes, modulos, funcoes, etc.) devem estar abertas para extensao, 
-	porem fechadas para modificacao"			
+	"Entidades de software (classes, modulos, funções, etc.) devem estar abertas para extensão, 
+	porém fechadas para modificação"			
 										        -- Bertrand Meyer
 										        
 3 - (L)iskov Substitution Principle										        
 	"Se q(x) é propriedade demonstravel dos objetos x de tipo T, 
 	então q(y) deve ser verdadeiro para objetos y de tipo S, onde S é um subtipo de T."	
-												-- Barbara Liskov								           
+												-- Barbara Liskov	
+												
+5 - (D)ependency Inversion Principle
+	"Abstrações não devem depender de implementações. Implementações devem depender de abstrações."
+												-- Robert (Uncle Bob) Martin							           
