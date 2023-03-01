@@ -26,6 +26,19 @@ public class TestesDescontos {
 	 * 
 	 */
 
+	/**
+	 * Pattern Template Method:
+	 * 
+	 * A ideia desse pattern, é ter um metodo como se fosse um template, um padrão, um modelo que
+	 * faz parte do processo, mas ele delega.
+	 * 
+	 * Veja que tiramos a logica das classes filhas de Desconto, e deixamos a regra no metodo
+	 * "calcular" na classe mãe Desconto. Com isso, caso tenhamos que criar um novo tipo de Desconto,
+	 * basta ele herdar da classe mãe e implementar os metodos abstratos.
+	 * Essa mudança nos favore em tirar o código repetido, principalmente das classes filhas de Desconto.
+	 * 
+	 */
+	
 	public static void main(String[] args) {
 
 		Orcamento orcamentoPrimeiro = new Orcamento(new BigDecimal("200"), 6);
