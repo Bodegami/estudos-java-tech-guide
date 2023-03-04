@@ -1,9 +1,12 @@
 package br.com.alura.loja;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import br.com.alura.loja.pedido.GeraPedido;
 import br.com.alura.loja.pedido.GeraPedidoHandler;
+import br.com.alura.loja.pedido.acao.EnviarEmailPedido;
+import br.com.alura.loja.pedido.acao.SalvarPedidoNoBancoDeDados;
 
 public class TestesPedidos {
 	
@@ -30,6 +33,19 @@ public class TestesPedidos {
 	 * criamos um objeto do tipo GeraPedidoHandler, chamando o metodo executa passando o
 	 * objeto do tipo GeraPedido como parametro.
 	 * 
+	 * 
+	 * 
+	 * Pattern OBSERVER:
+	 * 
+	 * Segue a ideia ter uma ouvintes/ observadores (listener, observer) como as classes
+	 * EnviarEmailPedido e SalvarPedidoNoBancoDeDados. Elas ficam observando uma acao e quando
+	 * elas forem chamadas, elas devem executar as suas logicas.
+	 * Repare também que injetamos com um dependencia da classe GeraPedidoHandler e inclusive 
+	 * no seu construtor, uma lista de observers. 
+	 * Dessa forma, sempre que uma nova acao for adicionada, não precisamos alterar a classe
+	 * GeraPedidoHandler, apenas precisamos criar a classe que vai implementar a interface
+	 * AcaoAposGerarPedido.
+	 * 
 	 */
 	
 	public static void main(String[] args) {
@@ -39,7 +55,10 @@ public class TestesPedidos {
 		int quantidadeItens = Integer.parseInt(args[2]);
 		
 		GeraPedido gerador = new GeraPedido(cliente, valorOrcamento, quantidadeItens);
-		GeraPedidoHandler handler = new GeraPedidoHandler(/*dependencias*/);
+		GeraPedidoHandler handler = new GeraPedidoHandler(
+				Arrays.asList(new SalvarPedidoNoBancoDeDados(),
+						new EnviarEmailPedido()
+						));
 		handler.executa(gerador);
 	}
 
