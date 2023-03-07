@@ -10,13 +10,25 @@ import br.com.alura.loja.orcamento.Orcamento;
 public class TestesImpostos {
 
 	/**
-	 * Pattern Strategy:
+	 * Pattern Decorator:
 	 * 
-	 * Ao inves de criar um switch ou if que faz determinada coisa dependendo da
-	 * informacao que receber, podemos usar o Strategy que nos permite criar uma
-	 * interface ou classe abstrata que detem um contrato, e apartir disso criamos
-	 * classes concretas para que implementem esse contrato. Dessa forma temos um
-	 * código mais coeso e com classes que tendem a mudar pouco.
+	 * A ideia do Decorator é decorar/compor um objeto com outro objeto.
+	 * Fazendo um analogia com a arvore de natal, pense que você comprou
+	 * uma arvore de natal, tirou da caixa e montou na sua casa. Pronto, 
+	 * você tem uma arvore de natal. Depois você decora ela com pisca-piscas,
+	 * agora você tem uma arvore de natal com pisca-piscas. Depois você coloca
+	 * uma estrela no topo. Você tem um arvore de natal com pisca-piscas e 
+	 * estrela no topo. Note que conforme a necessidade, você vai decorando seu 
+	 * objeto com outros e alterando o seu comportamento.
+	 * 
+	 * Essa é a ideia do Decorator, você ter uma classe que possa ser decorada
+	 * com outros objetos ou não e mudando o seu comportamento de acordo com
+	 * o objeto.
+	 * 
+	 * No exemplo abaixo, passamos "null" quando queremos chamar um objeto sem
+	 * usar o decorator. Por exemplo, eu passo o imposto do ISS, que recebe um
+	 * objeto ICMS, mas o objeto ICMS não recebe outro imposto e encerra o 
+	 * encadeiamento ali.
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -24,8 +36,7 @@ public class TestesImpostos {
 		Orcamento orcamento = new Orcamento(new BigDecimal("100"), 1);
 		CalculadoraDeImpostos calculadora = new CalculadoraDeImpostos();
 		
-		System.out.println(calculadora.calcular(orcamento, new ICMS()));
-		System.out.println(calculadora.calcular(orcamento, new ISS()));
+		System.out.println(calculadora.calcular(orcamento, new ISS(new ICMS(null))));
 		
 
 	}
