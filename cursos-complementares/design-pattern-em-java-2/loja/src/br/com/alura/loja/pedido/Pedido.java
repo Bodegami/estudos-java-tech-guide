@@ -9,7 +9,7 @@ public class Pedido {
 	private String cliente;
 	private LocalDateTime data;
 	private Orcamento orcamento;
-	
+
 	public Pedido(String cliente, LocalDateTime data, Orcamento orcamento) {
 		this.cliente = cliente;
 		this.data = data;
@@ -27,6 +27,10 @@ public class Pedido {
 	public Orcamento getOrcamento() {
 		return orcamento;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Pedido [cliente=" + cliente + ", data=" + data + ", orcamento=" + orcamento + "]";
+	}
+
 }

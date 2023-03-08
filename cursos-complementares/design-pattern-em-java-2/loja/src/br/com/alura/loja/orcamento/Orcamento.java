@@ -19,20 +19,20 @@ public class Orcamento implements Orcavel {
 		this.itens = new ArrayList<>();
 		this.situacao = new EmAnalise();
 	}
-	
+
 	public void aplicarDescontoExtra() {
 		BigDecimal valorDoDescontoExtra = this.situacao.calcularValorDescontoExtra(this);
 		this.valor = this.valor.subtract(valorDoDescontoExtra);
 	}
-	
+
 	public void aprovar() {
 		this.situacao.aprovar(this);
 	}
-	
+
 	public void reprovar() {
 		this.situacao.reprovar(this);
 	}
-	
+
 	public void finalizar() {
 		this.situacao.finalizar(this);
 	}
@@ -44,11 +44,11 @@ public class Orcamento implements Orcavel {
 	public int getQuantidadeItens() {
 		return itens.size();
 	}
-	
+
 	public SituacaoOrcamento getSituacao() {
 		return situacao;
 	}
-	
+
 	public void setSituacao(SituacaoOrcamento situacao) {
 		this.situacao = situacao;
 	}
@@ -56,10 +56,15 @@ public class Orcamento implements Orcavel {
 	public boolean isFinalizado() {
 		return situacao instanceof Finalizado;
 	}
-	
+
 	public void adicionarItem(Orcavel item) {
 		this.valor = valor.add(item.getValor());
 		this.itens.add(item);
+	}
+
+	@Override
+	public String toString() {
+		return "Orcamento [valor=" + valor + ", situacao=" + situacao + ", itens=" + itens + "]";
 	}
 
 }
