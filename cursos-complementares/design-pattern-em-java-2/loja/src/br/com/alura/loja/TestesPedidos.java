@@ -29,6 +29,11 @@ public class TestesPedidos {
 	 * disponibilizamos uma interface, um metodo que para o cliente.
 	 * 
 	 * 
+	 * Aqui, aplicamos esse pattern no metodo executa do Handler.
+	 * Note que dentro do metodo ele executa diversas chamadas e tudo
+	 * mais, mas para o cliente disponibilizamos apenas um metodo que
+	 * faz o encapsulamento de toda essa complexidade.
+	 * 
 	 */
 	
 	public static void main(String[] args) {
