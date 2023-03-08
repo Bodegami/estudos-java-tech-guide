@@ -8,11 +8,11 @@ import br.com.alura.loja.orcamento.situacao.EmAnalise;
 import br.com.alura.loja.orcamento.situacao.Finalizado;
 import br.com.alura.loja.orcamento.situacao.SituacaoOrcamento;
 
-public class Orcamento {
+public class Orcamento implements Orcavel {
 
 	private BigDecimal valor;
 	private SituacaoOrcamento situacao;
-	private List<ItemOrcamento> itens;
+	private List<Orcavel> itens;
 
 	public Orcamento() {
 		this.valor = BigDecimal.ZERO;
@@ -57,7 +57,7 @@ public class Orcamento {
 		return situacao instanceof Finalizado;
 	}
 	
-	public void adicionarItem(ItemOrcamento item) {
+	public void adicionarItem(Orcavel item) {
 		this.valor = valor.add(item.getValor());
 		this.itens.add(item);
 	}
