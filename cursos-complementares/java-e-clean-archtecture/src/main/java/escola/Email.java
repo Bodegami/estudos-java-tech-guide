@@ -2,18 +2,16 @@ package escola;
 
 public class Email {
 	
-	private String email;
-
-	public Email(String email) {
-		this.email = isValid(email);
-	}
+	//VALUE OBJECT
 	
-	public String isValid(String email) {
-		if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-			throw new IllegalArgumentException("invalid email!");
+	private String endereco;
+
+	public Email(String endereco) {
+		if (endereco == null || !endereco.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+			throw new IllegalArgumentException("E-mail invalido!");
 		}
 		
-		return email;
+		this.endereco = endereco;
 	}
 	
 }

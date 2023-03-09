@@ -1,5 +1,6 @@
 package escola;
 
+//ENTIDADE
 public class Aluno {
 
 	private String cpf;
