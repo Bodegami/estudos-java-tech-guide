@@ -1,4 +1,4 @@
-package br.com.alura.escola.aluno;
+package br.com.alura.escola.dominio.aluno;
 
 //Pattern BUILDER
 public class FabricaDeAluno {
