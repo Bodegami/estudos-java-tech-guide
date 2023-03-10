@@ -32,14 +32,14 @@ Primeira etapa:
 
 
 - Boas praticas:
-  - Curso de SOLID com Java: princípios da programação orientada a objetos
-  - Curso de Design Patterns em Java I: boas práticas de programação
-  - Curso de Design Patterns em Java II: avançando nas boas práticas de programação
+  - Curso de SOLID com Java: princípios da programação orientada a objetos                  :white_check_mark:
+  - Curso de Design Patterns em Java I: boas práticas de programação                        :white_check_mark:
+  - Curso de Design Patterns em Java II: avançando nas boas práticas de programação         :white_check_mark:
   - Curso de Java e Domain Driven Design: apresentando os conceitos
   - Curso de Java e Clean Architecture: descomplicando arquitetura de software
 
 
 - Podcasts:
-  - Hipsters Ponto Tech #219 - SOLID: Código bom e bonito
+  - Hipsters Ponto Tech #219 - SOLID: Código bom e bonito                                   :white_check_mark:
   - Hipsters #206 - Design Patterns
   - Hipsters Ponto Tech #254 - Clean Architeture
