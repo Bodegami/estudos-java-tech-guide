@@ -1,8 +1,11 @@
 package br.com.alura.escola.dominio.aluno;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
+//AGGREATE ROOT
 public class Aluno {
 	
 	private CPF cpf;
@@ -21,7 +24,10 @@ public class Aluno {
 	}
 
 	public void adicionarTelefone(String ddd, String numero) {
-		//regra de negocio == business invariant
+		// regra de negocio == business invariant
+		// Invariantes nada mais são do que regras de negócio que precisam ser verificadas 
+		// para garantir sua consistência.
+		
 		if (telefones.size() == 2) {
 			throw new NumeroMaximoTelefones("numero maximo de telefones já atingido!");
 		}
@@ -41,7 +47,7 @@ public class Aluno {
 	}
 	
 	public List<Telefone> getTelefones() {
-		return telefones;
+		return Collections.unmodifiableList(telefones);
 	}
 
 	public String getSenha() {
