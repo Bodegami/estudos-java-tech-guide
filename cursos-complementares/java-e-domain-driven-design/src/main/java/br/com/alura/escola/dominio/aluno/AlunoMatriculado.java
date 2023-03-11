@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import br.com.alura.escola.dominio.Evento;
 
+//Gera um evento
 public class AlunoMatriculado implements Evento {
 
 	private final CPF cpfDoAluno;
