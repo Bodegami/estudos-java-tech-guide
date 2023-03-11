@@ -21,6 +21,10 @@ public class Aluno {
 	}
 
 	public void adicionarTelefone(String ddd, String numero) {
+		//regra de negocio == business invariant
+		if (telefones.size() == 2) {
+			throw new NumeroMaximoTelefones("numero maximo de telefones já atingido!");
+		}
 		this.telefones.add(new Telefone(ddd, numero));
 	}
 	
