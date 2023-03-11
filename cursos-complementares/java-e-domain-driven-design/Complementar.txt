@@ -1,0 +1,2 @@
+About DDD and Aggregates:
+	Link: https://martinfowler.com/bliki/DDD_Aggregate.html
