@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import br.com.alura.escola.shared.dominio.CPF;
+
 //AGGREATE ROOT
 public class Aluno {
 	
