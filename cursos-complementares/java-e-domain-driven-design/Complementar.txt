@@ -3,3 +3,6 @@ About DDD and Aggregates:
 	
 Ler sobre "Mapa de contextos":
 	Link: https://martinfowler.com/bliki/BoundedContext.html
+	
+Sobre o Shared Kernel:
+	Link: https://maiconheck.medium.com/domain-driven-design-os-building-blocks-parte-3-domain-subdomains-e-bounded-contexts-a51d5a9d9851
