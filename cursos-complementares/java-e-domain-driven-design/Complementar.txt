@@ -6,3 +6,15 @@ Ler sobre "Mapa de contextos":
 	
 Sobre o Shared Kernel:
 	Link: https://maiconheck.medium.com/domain-driven-design-os-building-blocks-parte-3-domain-subdomains-e-bounded-contexts-a51d5a9d9851
+	
+Livro Domain-Driven Design
+	- Eric Evans
+	
+Livro Implementing Domain-Driven Design:
+	- Vaughn Vernon
+	
+Livro Domain-Driven Design Distilled:
+	- Vaughn Vernon
+	
+Livro Domain-Driven Design with Spring Boot - Enterprise Application from scratch
+	-  Ajay Kumar
