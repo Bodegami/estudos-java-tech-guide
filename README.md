@@ -66,12 +66,21 @@ File:  [Techguide Java](TECHGUIDE.md)
     - Formação Java e Spring Boot 3
       - Curso de Spring Boot 3 API REST: construa uma API
       - Curso de Spring Boot 3 API Rest: Segurança da API, Cache e Monitoramento
-      - Curso de Spring Boot 3 e Teste: Profiles, Testes e Deploy      
+      - Curso de Spring Boot 3 e Teste: Profiles, Testes e Deploy 
+    - Formação Aprofunde em Java com arquitetura de Microsserviços, Spring e RabbitMQ
+      - Curso de Microsserviços na prática: entendendo a tomada de decisões
+      - Curso de Microsserviços na prática: implementando com Java e Spring
+      - Curso de Microsserviços na prática: IaC com CDK e deploy na AWS
+      - Curso de Microsserviços na prática: mensageria com RabbitMQ
    
   
 - <b>Desafio:</b>
   - Desafio Seven days of code Spring                                                        
        
+       
+- <b>Podcasts:</b>
+  - Case Banco PAN: Cloud e Microsserviços Hipsters Ponto Tech #306
+         
 
 - <b>Videos:</b>
   - O que é Spring Framework? #Hipsterspontotube
