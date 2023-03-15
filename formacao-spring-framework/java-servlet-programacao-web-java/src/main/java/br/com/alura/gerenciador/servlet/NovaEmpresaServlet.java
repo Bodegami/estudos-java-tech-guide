@@ -26,7 +26,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		banco.adiciona(empresa);
 		
 		System.out.format("Cadastrando nova empresa %s", nomeEmpresa);
-		out.println(String.format("<html><body>Empresa %s cadastrada com sucesso!</body></html>", nomeEmpresa));
+		
 	}
 
 }
