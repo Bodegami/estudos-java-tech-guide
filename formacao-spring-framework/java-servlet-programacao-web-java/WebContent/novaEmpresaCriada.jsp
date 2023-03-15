@@ -6,8 +6,11 @@
   // out.println(nomeEmpresa);
   // '<%= nomeEmpresa' tem a mesma funcao que 'out.println(nomeEmpresa)'
 
+  // Expression Language = EL
+  // ${3 + 3}, ${novaEmpresa}
+
   String nomeEmpresa = (String) request.getAttribute("empresa");
-  System.out.println(nomeEmpresa);
+  System.out.println("Endpoint: /novaEmpresaCriada.jsp ::: Entrada Request: " + nomeEmpresa);
 %>
 
 <html>
