@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List, br.com.alura.gerenciador.servlet.Empresa" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%
 	// Com o JSTL simplicamos bastante a forma de iterar sobre um laço de repetição
@@ -22,7 +23,8 @@
 	  
 		<ul>
 			<c:forEach items="${empresas}" var="empresa">
-				<li>${empresa.nome}</li>
+				<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy" var="dataFormatada"/>
+				<li>${empresa.nome} ::: ${dataFormatada}</li>
 			</c:forEach>
 		</ul>
 	</body>
