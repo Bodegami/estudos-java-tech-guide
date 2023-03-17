@@ -48,10 +48,11 @@ File:  [Techguide Java](TECHGUIDE.md)
 <h3>Segunda etapa: </h3>
 
 - <b>Cursos:</b>                
-  - Formação Spring Framework               
-    - Curso de Java Servlet: programação web Java                                  
-    - Curso de Java Servlet: autenticação, autorização e o padrão MVC                              
-    - Curso de Maven: gerenciamento de dependências e build de aplicações Java 
+  - Formação Spring Framework
+    - Formação Java Web: crie aplicações com Servlets e MVC
+	  - Curso de Java Servlet: programação web Java                                      :white_check_mark:                                 
+	  - Curso de Java Servlet: autenticação, autorização e o padrão MVC                              
+	  - Curso de Maven: gerenciamento de dependências e build de aplicações Java 
     - Formação Integre aplicações Java com Banco de dados
       - Curso de Java e JDBC: trabalhando com um banco de dados                                    
       - Curso de Persistência com JPA: Hibernate                             
