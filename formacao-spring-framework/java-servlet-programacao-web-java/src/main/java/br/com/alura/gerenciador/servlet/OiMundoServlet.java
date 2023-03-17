@@ -12,6 +12,7 @@ public class OiMundoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	/**
+	 * Sobre SERVLET e o TOMCAT:
 	 * 
 	 * Repare que em nenhum momento criamos um metodo main na aplicacao,
 	 * ainda assim quando subimos a aplicacao e chamamos algum endpoint
@@ -37,6 +38,20 @@ public class OiMundoServlet extends HttpServlet {
 	 * de forma que precisamos nos preocupar apenas com as classes e as 
 	 * regras de negocio, é conhecido como IOC (Inversão de Controle).
 	 * 
+	 * 
+	 * ======================================================================
+	 * 
+	 * Sobre o processo de deploy:
+	 * 
+	 * Para fazer o deploy da aplicacao, geramos um arquivo .war da aplicacao
+	 * e adicionamos esse arquivo dentro da pasta 'webapps' no diretorio do tomcat.
+	 * Feito isso, voltamos ate a raiz da diretorio do Tomcat e acessamos a pasta
+	 * 'bin' e executamos o arquivo startup.bat (Windows) ou startup.sh (Linux).
+	 * Nesse momento o Tomcat descompacta o arquivo .war da aplicao e sobe o servidor
+	 * com todos arquivos necessarios para execucao da aplicacao.
+	 * Agora é só testar chamando algum dos endpoints criados na aplicacao.
+	 *  
+	 *  
 	 */
 	
 	public OiMundoServlet() {
