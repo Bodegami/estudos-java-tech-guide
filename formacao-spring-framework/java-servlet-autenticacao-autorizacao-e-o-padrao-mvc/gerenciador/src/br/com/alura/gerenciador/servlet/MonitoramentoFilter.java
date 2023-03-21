@@ -15,6 +15,8 @@ public class MonitoramentoFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
+		System.out.println("MonitoramentoFilter");
 
 		long antes = System.currentTimeMillis();
 		
@@ -24,11 +26,14 @@ public class MonitoramentoFilter implements Filter{
 		// requisicao, do contrário a requisicao ficara parada
 		// Alem disso, repare que a url de mapeamento é a mesma do servlet, porem como o filter
 		// é uma camada que fica na frente do sevlet, ele sempre será o primeiro a ser executado
+		// Outro ponto é que que quando utilizamos a anotacao @WebFilter, não temos garantia da
+		// ordem de execucao dos filtros, caso fosse preciso garantir a ordem, ai teriamos que
+		// implementar o filtro via web.xml
 		chain.doFilter(request, response);
 		
 		long depois = System.currentTimeMillis();
 		long tempoExecucao = (depois - antes);
-		System.out.printf("Tempo de execução da ação: %s -> %d\n ms", acao, tempoExecucao);
+		System.out.printf("Tempo de execução da ação: %s -> %d ms \n", acao, tempoExecucao);
 		
 	}
 
