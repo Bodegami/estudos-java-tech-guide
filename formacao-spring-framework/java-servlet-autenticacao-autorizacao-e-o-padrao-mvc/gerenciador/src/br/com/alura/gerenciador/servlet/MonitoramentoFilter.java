@@ -4,12 +4,24 @@ import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 //@WebFilter(urlPatterns = "/entrada")
-public class MonitoramentoFilter implements Filter{
+public class MonitoramentoFilter implements Filter {
+	
+	//Para o Tomcat, podemos utilizar a implementacao default da interface
+	//Mas com o Jetty, é necessário reimplementar
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+	
+	//Para o Tomcat, podemos utilizar a implementacao default da interface
+	//Mas com o Jetty, é necessário reimplementar
+	@Override
+	public void destroy() {}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
