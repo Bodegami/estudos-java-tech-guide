@@ -1,6 +1,7 @@
 package br.com.alura.alurator;
 
-import java.lang.reflect.InvocationTargetException;
+import br.com.alura.alurator.protocolo.Request;
+import br.com.alura.alurator.reflexao.Reflexao;
 
 public class Alurator {
 	
@@ -11,35 +12,20 @@ public class Alurator {
 	}
 	
 	public Object executa(String url) {
-		// TODO - processa a requisicao executando o metodo
-		// da classe em questao
+		Request request = new Request(url);
 		
-		// url -> /controlador/lista
+		String nomeControle = request.getNomeControle();
 		
-		// /produto/lista
+		Object instanciaControle = new Reflexao()
+			.refleteClasse(pacoteBase + nomeControle)
+			.getConstrutorPadrao()
+			.invocar();
 		
-		String[] partesUrl = url.replaceFirst("/", "")
-								.split("/");
+//		Class<?> classeControle = Class.forName(pacoteBase + nomeControle);
+//		
+//		Object instanciaControle = classeControle.getDeclaredConstructor().newInstance();
 		
-		String nomeControle = Character.toUpperCase(partesUrl[0].charAt(0)) + 
-				partesUrl[0].substring(1) + "Controller";
-		
-		try {
-			Class<?> classeControle = Class.forName(pacoteBase + nomeControle);
-			
-			Object instanciaControle = classeControle.getDeclaredConstructor().newInstance();
-			
-			System.out.println(instanciaControle);
-			
-			return null;
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | 
-				IllegalArgumentException | NoSuchMethodException | SecurityException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-			throw new RuntimeException("Erro no construtor ", e.getTargetException());
-		}
-
+		System.out.println(instanciaControle);
+		return null;
 	}
 }
