@@ -27,7 +27,7 @@ public class TesteInvocaMetodoSemParametro {
         }
         
         //Quando o metodo tem retorno, o invoke retorna Object
-        //Quando o metodo nao tem retorno, o invoke retorna null
+        //Quando o metodo tem retorno void, o invoke retorna null
         
         
         Method method = subControleClasse.getDeclaredMethod("metodoSubControle1");
