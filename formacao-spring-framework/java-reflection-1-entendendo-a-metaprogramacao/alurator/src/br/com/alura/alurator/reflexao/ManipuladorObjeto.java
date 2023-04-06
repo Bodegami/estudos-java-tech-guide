@@ -22,9 +22,11 @@ public class ManipuladorObjeto {
 		// 3) Lançar uma RuntimeException caso nenhum método seja encontrado.
 		
 		Stream<Method> metodos = Stream.of(instancia.getClass().getDeclaredMethods());
-		Method metodoSelecionado = metodos.filter(metodo -> true)
-				.findFirst()
-				.orElseThrow(() -> new RuntimeException("metodo nao encontrado!"));
+		Method metodoSelecionado = metodos.filter(metodo -> 
+												metodo.getName().equals(nomeMetodo)
+												&& metodo.getParameterCount() == params.values().size())
+											.findFirst()
+											.orElseThrow(() -> new RuntimeException("metodo nao encontrado!"));
 		
 		try {
 			Method metodo = instancia.getClass().getDeclaredMethod(nomeMetodo);
