@@ -31,6 +31,9 @@ public class Main {
 			Alurator alurator = new Alurator("br.com.alura.estoque.controle.");
 			alurator.registra(ProdutoDao.class, ProdutoDaoMock.class);
 			
+			//Utilizando o ContainerIoC com Generics, agora em tempo de desenvolvimento a IDE avisa que não é compativel
+			//alurator.registra(List.class, String.class);
+			
 			while (!url.equals("exit")) {
 				Object response = alurator.executa(url);
 				

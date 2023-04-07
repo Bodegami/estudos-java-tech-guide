@@ -1,6 +1,5 @@
 package br.com.alura.alurator.playground.reflexao;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import br.com.alura.alurator.playground.controle.SubControle;
