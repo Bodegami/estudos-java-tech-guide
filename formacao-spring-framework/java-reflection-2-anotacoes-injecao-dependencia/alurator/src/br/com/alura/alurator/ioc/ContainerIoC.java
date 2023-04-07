@@ -4,13 +4,22 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 public class ContainerIoC {
+	private Map<Class<?>, Class<?>> mapaDeTipos = new HashMap<>();
 	
     public Object getInstancia(Class<?> tipoFonte) {
+    	Class<?> tipoDestino = mapaDeTipos.get(tipoFonte);
+    	
+    	if (tipoDestino != null) {
+    		return getInstancia(tipoDestino);
+    	}
+    	
         Stream<Constructor<?>> construtores =
                 Stream.of(tipoFonte.getDeclaredConstructors());
         
@@ -43,5 +52,12 @@ public class ContainerIoC {
             throw new RuntimeException(e);
         }
     }
+
+	public void registra(Class<?> tipoFonte, Class<?> tipoDestino) {
+		
+		//tipoFonte=List, tipoDestino=String
+		mapaDeTipos.put(tipoFonte, tipoDestino);
+		
+	}
 }
 
