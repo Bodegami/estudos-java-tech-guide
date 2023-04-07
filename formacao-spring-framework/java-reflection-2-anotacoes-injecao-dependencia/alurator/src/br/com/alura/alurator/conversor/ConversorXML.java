@@ -3,6 +3,8 @@ package br.com.alura.alurator.conversor;
 import java.lang.reflect.Field;
 import java.util.Collection;
 
+import br.com.alura.alurator.conversor.anotacao.NomeTagXml;
+
 public class ConversorXML {
 
 	public String converte(Object objeto) {
@@ -27,7 +29,7 @@ public class ConversorXML {
 			}
 			else {
 				
-				String nomeClasse = classeObjeto.getSimpleName();
+				String nomeClasse = classeObjeto.getAnnotation(NomeTagXml.class).value();
 				
 				xmlBuilder.append("<"+nomeClasse+">");
 				
@@ -50,7 +52,7 @@ public class ConversorXML {
 		}
 		catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Erro na geração odo XML!");
+			throw new RuntimeException("Erro na geração do XML!");
 		}
 
 	}
