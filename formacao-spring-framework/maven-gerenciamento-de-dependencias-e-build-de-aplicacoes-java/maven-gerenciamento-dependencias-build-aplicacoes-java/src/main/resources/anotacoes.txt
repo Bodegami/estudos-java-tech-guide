@@ -8,3 +8,9 @@ local da máquina, que geralmente fica na raiz do usuário na pasta oculta .m2
 # As vezes quando o maven vai fazer o download de alguma dependencia, ele pode acabar corrompendo 
 a dependencia e isso ficara armazenado no cache local da máquina. Nessa situacao, o ideal é 
 apagar todo o cache local e mandar o maven baixar as dependencias novamente.
+
+# acessando o diretorio da raiz do projeto, podemos usar os comandos:
+
+1 - mvn clean == para limpar o diretorio target
+2 - mvn compile == para compilar o projeto
+3 - mvn test == vai procurar os testes automatizados do projeto e dizer se passou ou nao
