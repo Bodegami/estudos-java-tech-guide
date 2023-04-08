@@ -31,3 +31,12 @@ criacao do jar ou war da aplicacao
 
 # É possível ver os plugins disponiveis no site do Maven plugins: https://maven.apache.org/plugins/
 
+# Em situacoes onde estamos numa rede que contém proxy, precisamos configurar isso no projeto também para que seja
+possível baixar as dependencias da aplicacao. Essa configuracao é feita num arquivo chamado "settings.xml" que fica
+no repositorio local .m2.
+Dentro desse arquivos adicionamos uma tag chamada proxies -> criamos uma tag chamada proxy -> depois adicionamos as
+informacoes referentes a hostname, port, username e password. Temos um exemplo na raiz deste projeto.
+
+# Outro ponto interessante é que a tag repositories que colocamos no pom.xml e que é responsavel por apontar o repositorio
+remoto de onde o maven deve baixar as dependencias, ela pode ser configurada também no settings.xml, porém caso essa tag
+já esteja definida no pom e no settings, o maven sempre vai dar preferencia para o pom.xml.
