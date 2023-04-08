@@ -1,0 +1,10 @@
+# As dependencias ficam no repositorio central do Maven
+
+# Podemos configurar um outro repositorio no pom.xml usando a tag repositories
+
+# Por padrao, sempre que adicionamos uma nova dependencia, primeiro o maven procura no cache
+local da máquina, que geralmente fica na raiz do usuário na pasta oculta .m2
+
+# As vezes quando o maven vai fazer o download de alguma dependencia, ele pode acabar corrompendo 
+a dependencia e isso ficara armazenado no cache local da máquina. Nessa situacao, o ideal é 
+apagar todo o cache local e mandar o maven baixar as dependencias novamente.
