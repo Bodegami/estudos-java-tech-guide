@@ -14,3 +14,15 @@ apagar todo o cache local e mandar o maven baixar as dependencias novamente.
 1 - mvn clean == para limpar o diretorio target
 2 - mvn compile == para compilar o projeto
 3 - mvn test == vai procurar os testes automatizados do projeto e dizer se passou ou nao
+4 - mvn package == faz o empacotamento da aplicacao no formato especificado no pom.xml, pode ser .war ou .jar 
+e salva no diretorio target na raiz do projeto
+5 - mvn install == faz todo o processo do package, porém ele salva também no cache local no repositorio .m2
+6 - mvn deploy == faz todo o processo do package, porem ele salva também no repositorio remoto configurado no pom.xml,
+dentro da tag repositories
+
+
+
+# No pom.xml, utilizamos a tag packaging para informar o tipo de empacotamento. Por padrao o formato criado é .jar.
+
+# No pom.xml, dentro da tag build, podemos utilizar a tag finalName para especificar o nome que será utilizado na 
+criacao do jar ou war da aplicacao
