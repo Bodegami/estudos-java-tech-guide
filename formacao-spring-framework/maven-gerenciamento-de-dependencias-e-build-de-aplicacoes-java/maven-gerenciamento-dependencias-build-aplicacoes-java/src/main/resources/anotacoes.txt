@@ -40,3 +40,16 @@ informacoes referentes a hostname, port, username e password. Temos um exemplo n
 # Outro ponto interessante é que a tag repositories que colocamos no pom.xml e que é responsavel por apontar o repositorio
 remoto de onde o maven deve baixar as dependencias, ela pode ser configurada também no settings.xml, porém caso essa tag
 já esteja definida no pom e no settings, o maven sempre vai dar preferencia para o pom.xml.
+
+# A partir do Java 9 surgiu a api de modulos e com isso vieram novas tags para pom.xml:
+- Em cenários onde temos modulos, geralmente temos uma aplicacao que seria como "pai" desses modulos.
+- No projeto pai, no pom.xml temos a tag packaging que deve estar definida com o valor pom e além disso temos a tag
+"modules" que deve conter todos os modulos que integram a aplicacao.
+- Já dentro do pom.xml de cada um dos modulos, não temos a tag "groupId", mas temos a tag "parent" que deve conter 
+as configuracoes do modulo "pai" que são groupId, artifactId e version. 
+- Alem disso, as dependencias que que estão no pom.xml do modulo "pai" serão herdadas aos modulos filhos. Com isso é
+possível ter um controle melhor das dependencias especificas de cada projeto.
+- Outro ponto interessante é que se um modulo filho "A" depende de outro modulo filho "B", é possivel fazer isso 
+adicionando o modulo filho "B" como dependencia no pom.xml do modulo filho "A".
+
+
