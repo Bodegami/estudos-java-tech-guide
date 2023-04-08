@@ -49,12 +49,12 @@ File:  [Techguide Java](TECHGUIDE.md)
 
 - <b>Cursos:</b>                
   - Formação Spring Framework
-    - Formação Java Web: crie aplicações com Servlets e MVC
+    - Formação Java Web: crie aplicações com Servlets e MVC                              :white_check_mark:  
       - Curso de Java Servlet: programação web Java                                      :white_check_mark:                                 
       - Curso de Java Servlet: autenticação, autorização e o padrão MVC                  :white_check_mark:             
-      - Curso de Maven: gerenciamento de dependências e build de aplicações Java
-    - Curso de Java Reflection parte 1: entendendo a metaprogramação 
-    - Curso de Java Reflection parte 2: Anotações e Injeção de Dependências  
+      - Curso de Maven: gerenciamento de dependências e build de aplicações Java         :white_check_mark:  
+    - Curso de Java Reflection parte 1: entendendo a metaprogramação                     :white_check_mark:  
+    - Curso de Java Reflection parte 2: Anotações e Injeção de Dependências              :white_check_mark:  
     - Formação Integre aplicações Java com Banco de dados
       - Curso de Java e JDBC: trabalhando com um banco de dados                                    
       - Curso de Persistência com JPA: Hibernate                             
