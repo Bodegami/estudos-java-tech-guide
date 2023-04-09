@@ -1,0 +1,18 @@
+Executar no terminal:
+
+1. docker-compose -f <nome_do_compose> up -d
+2. docker exec -it mysql bash
+3. mysql -uroot -p --host=mysql
+4. pass
+5. create database byte_bank;
+6. use byte_bank
+7. CREATE TABLE `conta` (
+     `numero` int NOT NULL,
+     `saldo` decimal(10,0) DEFAULT NULL,
+     `cliente_nome` varchar(50) DEFAULT NULL,
+     `cliente_cpf` varchar(11) DEFAULT NULL,
+     `cliente_email` varchar(50) DEFAULT NULL,
+     PRIMARY KEY (`numero`)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
