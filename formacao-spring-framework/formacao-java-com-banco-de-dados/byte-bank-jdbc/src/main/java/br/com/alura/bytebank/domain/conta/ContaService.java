@@ -58,7 +58,14 @@ public class ContaService {
         }
 
         Connection conn = connection.recuperarConexao();
-        new ContaDAO(conn).alterar(conta.getNumero(), valor);
+        BigDecimal novoValor = conta.getSaldo().add(valor);
+        new ContaDAO(conn).alterar(conta.getNumero(), novoValor);
+    }
+
+    public void realizarTransferencia(Integer numeroContaOrigem, Integer numeroContaDestino, BigDecimal valor) {
+
+        this.realizarSaque(numeroContaOrigem, valor);
+        this.realizarDeposito(numeroContaDestino, valor);
     }
 
     public void encerrar(Integer numeroDaConta) {
