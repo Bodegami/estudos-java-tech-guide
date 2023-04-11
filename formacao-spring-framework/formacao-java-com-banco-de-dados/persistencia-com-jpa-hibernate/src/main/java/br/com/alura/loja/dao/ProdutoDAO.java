@@ -1,6 +1,5 @@
 package br.com.alura.loja.dao;
 
-import br.com.alura.loja.modelo.Categoria;
 import br.com.alura.loja.modelo.Produto;
 
 import javax.persistence.EntityManager;
@@ -18,13 +17,10 @@ public class ProdutoDAO {
         this.em.persist(produto);
     }
 
-    //Merge pega um objeto em estado 'Detached' e muda para o estado 'Managed'
     public void atualizar(Produto produto) {
         this.em.merge(produto);
     }
 
-    //Primeiro com o Merge, pegamos um objeto em estado 'Detached' e mudamos para o estado 'Managed'
-    //Depois com o objeto em estado 'Managed', chamamos o 'remove' que muda o estado para 'Removed'
     public void remover(Produto produto) {
         produto = this.em.merge(produto);
         this.em.remove(produto);
@@ -37,6 +33,20 @@ public class ProdutoDAO {
     public List<Produto> buscarTodos() {
         String jpql = "SELECT p FROM Produto p";
         return this.em.createQuery(jpql, Produto.class).getResultList();
+    }
+
+    public List<Produto> buscarPorNome(String nomeRequest) {
+        String jpql = "SELECT p FROM Produto p WHERE p.nome = :nome";
+        return this.em.createQuery(jpql, Produto.class)
+                .setParameter("nome", nomeRequest)
+                .getResultList();
+    }
+
+    public List<Produto> buscarPorNomeDaCategoria(String nomeRequest) {
+        String jpql = "SELECT p FROM Produto p WHERE p.categoria.nome = ?1";
+        return this.em.createQuery(jpql, Produto.class)
+                .setParameter(1, nomeRequest)
+                .getResultList();
     }
 
 

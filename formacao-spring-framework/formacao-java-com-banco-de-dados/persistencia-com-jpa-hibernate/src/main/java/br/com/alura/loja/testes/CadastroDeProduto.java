@@ -17,22 +17,40 @@ public class CadastroDeProduto {
 
         //buscaPeloId();
 
+        //buscarTodos();
+
+        //buscarPorNome();
+
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+        List<Produto> todos = produtoDAO.buscarPorNomeDaCategoria("CELULARES");
+        todos.forEach(produto -> System.out.println(produto.getNome()));
+    }
+
+    private static List<Produto> buscarPorNome() {
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+        List<Produto> todos = produtoDAO.buscarPorNome("Xiaomi Redmi");
+        todos.forEach(produto -> System.out.println(produto.getNome()));
+        return todos;
+    }
+
+    private static List<Produto> buscarTodos() {
         EntityManager em = JPAUtil.getEntityManager();
         ProdutoDAO produtoDAO = new ProdutoDAO(em);
         List<Produto> todos = produtoDAO.buscarTodos();
         todos.forEach(produto -> System.out.println(produto.getNome()));
-
+        return todos;
     }
 
-    private static void buscaPeloId() {
-        Long id = 1L;
+    private static Produto buscaPeloId(Long id) {
         EntityManager em = JPAUtil.getEntityManager();
         ProdutoDAO produtoDAO = new ProdutoDAO(em);
 
-        Produto p = produtoDAO.buscarPorId(id);
-        System.out.println(p.getPreco());
+        Produto produto = produtoDAO.buscarPorId(id);
+        System.out.println(produto.getPreco());
+        return produto;
     }
-
 
     private static void cadastrarProduto() {
         Categoria celulares = new Categoria("CELULARES");
