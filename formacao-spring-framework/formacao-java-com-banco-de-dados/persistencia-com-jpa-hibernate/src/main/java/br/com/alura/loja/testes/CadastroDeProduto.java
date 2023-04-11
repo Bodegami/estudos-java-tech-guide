@@ -21,10 +21,30 @@ public class CadastroDeProduto {
 
         //buscarPorNome();
 
+        //buscarPorNomeDaCategoria();
+
+        buscarPrecoDoProdutoComNome();
+
+    }
+
+    private static BigDecimal buscarPrecoDoProdutoComNome() {
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+        BigDecimal result = produtoDAO.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
+        System.out.println(result);
+
+        em.close();
+        return result;
+    }
+
+    private static List<Produto> buscarPorNomeDaCategoria() {
         EntityManager em = JPAUtil.getEntityManager();
         ProdutoDAO produtoDAO = new ProdutoDAO(em);
         List<Produto> todos = produtoDAO.buscarPorNomeDaCategoria("CELULARES");
         todos.forEach(produto -> System.out.println(produto.getNome()));
+
+        em.close();
+        return todos;
     }
 
     private static List<Produto> buscarPorNome() {
@@ -32,6 +52,8 @@ public class CadastroDeProduto {
         ProdutoDAO produtoDAO = new ProdutoDAO(em);
         List<Produto> todos = produtoDAO.buscarPorNome("Xiaomi Redmi");
         todos.forEach(produto -> System.out.println(produto.getNome()));
+
+        em.close();
         return todos;
     }
 
@@ -40,6 +62,8 @@ public class CadastroDeProduto {
         ProdutoDAO produtoDAO = new ProdutoDAO(em);
         List<Produto> todos = produtoDAO.buscarTodos();
         todos.forEach(produto -> System.out.println(produto.getNome()));
+
+        em.close();
         return todos;
     }
 
@@ -49,6 +73,8 @@ public class CadastroDeProduto {
 
         Produto produto = produtoDAO.buscarPorId(id);
         System.out.println(produto.getPreco());
+
+        em.close();
         return produto;
     }
 
