@@ -11,6 +11,11 @@ public class Categoria {
     private Long id;
     private String nome;
 
+    //Hibernate Only
+    public Categoria() {
+
+    }
+
     public Categoria(String nome) {
         this.nome = nome;
     }
