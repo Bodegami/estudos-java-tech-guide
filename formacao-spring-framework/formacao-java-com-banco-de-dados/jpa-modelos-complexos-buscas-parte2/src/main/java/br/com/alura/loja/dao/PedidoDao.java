@@ -59,4 +59,12 @@ public class PedidoDao {
 		return em.createQuery(jpql, RelatorioDeVendasVO.class).getResultList();
 	}
 
+	//Query planejada para momentos que precisamos carregar uma informacao de um relacionamento e usamos o ManyToOne
+	//Ideal para situacoes com o carregamento LAZY, mas ainda assim é preciso carregar um informacao EAGER
+	public Pedido buscarPedidoComCliente(Long id) {
+		return em.createQuery("SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = :id", Pedido.class)
+				.setParameter("id", id)
+				.getSingleResult();
+	}
+
 }
