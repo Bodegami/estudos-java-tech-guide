@@ -18,9 +18,11 @@ public class Pedido {
     private BigDecimal valorTotal = BigDecimal.ZERO;
     private LocalDate data = LocalDate.now();
 
-    @ManyToOne
+    //Por padrao, relacionamentos "toOne" são do tipo EAGER (carrega junto o relacionamento)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
+    //Por padrao, relacionamentos "toMany" são do tipo LAZY (carrega somente se acessar objeto do relacionamento)
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens = new ArrayList<>();
 
@@ -68,4 +70,9 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
 }
