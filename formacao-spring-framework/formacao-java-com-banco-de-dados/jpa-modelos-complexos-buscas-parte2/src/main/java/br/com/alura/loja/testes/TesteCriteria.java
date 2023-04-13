@@ -48,6 +48,7 @@ public class TesteCriteria {
         pedidoDao.cadastrar(pedido2);
 
         em.getTransaction().commit();
+        em.close();
 
     }
 

@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import br.com.alura.loja.dao.CategoriaDao;
 import br.com.alura.loja.dao.ProdutoDao;
 import br.com.alura.loja.modelo.Categoria;
+import br.com.alura.loja.modelo.CategoriaId;
 import br.com.alura.loja.modelo.Produto;
 import br.com.alura.loja.util.JPAUtil;
 
@@ -21,11 +22,14 @@ public class CadastroDeProduto {
 		Produto p = produtoDao.buscarPorId(1l);
 		System.out.println(p.getPreco());
 		
-		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
-		todos.forEach(p2 -> System.out.println(p.getNome()));
+//		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("CELULARES");
+//		todos.forEach(p2 -> System.out.println(p.getNome()));
 	
 		BigDecimal precoDoProduto = produtoDao.buscarPrecoDoProdutoComNome("Xiaomi Redmi");
 		System.out.println("Preco do Produto: " +precoDoProduto);
+
+		Categoria categoria = em.find(Categoria.class, new CategoriaId("CELULARES", "xpto"));
+		System.out.println(categoria);
 	}
 
 	private static void cadastrarProduto() {
@@ -40,8 +44,9 @@ public class CadastroDeProduto {
 		
 		categoriaDao.cadastrar(celulares);
 		produtoDao.cadastrar(celular);
-		
+
 		em.getTransaction().commit();
+
 		em.close();
 	}
 
