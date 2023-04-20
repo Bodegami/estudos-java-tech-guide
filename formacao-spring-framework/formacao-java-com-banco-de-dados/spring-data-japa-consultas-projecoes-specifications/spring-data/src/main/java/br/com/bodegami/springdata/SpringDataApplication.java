@@ -1,8 +1,8 @@
 package br.com.bodegami.springdata;
 
-import br.com.bodegami.springdata.orm.Cargo;
-import br.com.bodegami.springdata.repository.CargoRepository;
 import br.com.bodegami.springdata.service.CrudCargoService;
+import br.com.bodegami.springdata.service.CrudFuncionarioService;
+import br.com.bodegami.springdata.service.CrudUnidadeTrabalhoService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,11 +12,20 @@ import java.util.Scanner;
 @SpringBootApplication
 public class SpringDataApplication implements CommandLineRunner {
 
-	private final CrudCargoService cargoService;
-	private boolean system = true;
+	private Boolean system = true;
 
-	public SpringDataApplication(CrudCargoService cargoService) {
+	private final CrudCargoService cargoService;
+
+	private final CrudFuncionarioService funcionarioService;
+
+	private final CrudUnidadeTrabalhoService unidadeTrabalhoService;
+
+	public SpringDataApplication(CrudCargoService cargoService,
+								 CrudFuncionarioService funcionarioService,
+								 CrudUnidadeTrabalhoService unidadeTrabalhoService) {
 		this.cargoService = cargoService;
+		this.funcionarioService = funcionarioService;
+		this.unidadeTrabalhoService = unidadeTrabalhoService;
 	}
 
 	public static void main(String[] args) {
@@ -25,28 +34,32 @@ public class SpringDataApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Scanner sc = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		while (system) {
-
-			System.out.println("Qual acao voce deseja executar:");
+			System.out.println("Qual função deseja executar?");
 			System.out.println("0 - Sair");
-			System.out.println("1 - Cargo");
+			System.out.println("1 - Funcionario");
+			System.out.println("2 - Cargo");
+			System.out.println("3 - Unidade");
 
+			Integer function = scanner.nextInt();
 
-			int action = sc.nextInt();
-			if (action == 1) {
-				cargoService.inicial(sc);
-			} else {
-				system = false;
+			switch (function) {
+				case 1:
+					cargoService.inicial(scanner);
+					break;
+				case 2:
+					funcionarioService.inicial(scanner);
+					break;
+				case 3:
+					unidadeTrabalhoService.inicial(scanner);
+					break;
+				default:
+					System.out.println("Finalizando");
+					system = false;
+					break;
 			}
-
 		}
-
-//
-//
-//		Cargo cargo = new Cargo();
-//		cargo.setDescricao("DESENVOLVEDOR DE SOFTWARE");
-//		repository.save(cargo);
 	}
 }
