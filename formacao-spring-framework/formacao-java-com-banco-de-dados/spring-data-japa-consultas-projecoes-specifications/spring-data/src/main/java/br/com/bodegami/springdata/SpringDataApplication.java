@@ -33,6 +33,7 @@ public class SpringDataApplication implements CommandLineRunner {
 			System.out.println("0 - Sair");
 			System.out.println("1 - Cargo");
 
+
 			int action = sc.nextInt();
 			if (action == 1) {
 				cargoService.inicial(sc);
