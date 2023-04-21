@@ -1,6 +1,7 @@
 package br.com.bodegami.springdata.service;
 
 import br.com.bodegami.springdata.orm.Funcionario;
+import br.com.bodegami.springdata.orm.FuncionarioProjecao;
 import br.com.bodegami.springdata.repository.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class RelatoriosService {
             System.out.println("1 - Busca funcionario por nome");
             System.out.println("2 - Busca funcionario nome, data contratacao e salario maior");
             System.out.println("3 - Busca funcionario nome data contratacao");
+            System.out.println("4 - Pesquisa funcionario salario");
 
             int action = scanner.nextInt();
 
@@ -40,6 +42,9 @@ public class RelatoriosService {
                     break;
                 case 3:
                     buscaFuncionarioDataContratacao(scanner);
+                    break;
+                case 4:
+                    pesquisarFuncionarioSalario();
                     break;
                 default:
                     system = false;
@@ -81,6 +86,12 @@ public class RelatoriosService {
 
         List<Funcionario> lista = repository.findDataContratacaoMaior(localDate);
         lista.forEach(System.out::println);
+    }
+
+    private void pesquisarFuncionarioSalario() {
+        List<FuncionarioProjecao> lista = repository.findFuncionarioSalario();
+        lista.forEach(f -> System.out.printf("Funcionario: id: %d | nome: %s | salario: %.2f \n",
+                f.getId(), f.getNome(), f.getSalario()));
     }
 
 
