@@ -55,10 +55,10 @@ File:  [Techguide Java](TECHGUIDE.md)
       - Curso de Maven: gerenciamento de dependências e build de aplicações Java           
     - Curso de Java Reflection parte 1: entendendo a metaprogramação                     :white_check_mark:  
     - Curso de Java Reflection parte 2: Anotações e Injeção de Dependências              :white_check_mark:  
-    - Formação Integre aplicações Java com Banco de dados
-      - Curso de Java e JDBC: trabalhando com um banco de dados                          :white_check_mark:         
-      - Curso de Persistência com JPA: Hibernate                                         :white_check_mark:
-      - Curso de Java e JPA: consultas avançadas, performance e modelos complexo         :white_check_mark:
+    - Formação Integre aplicações Java com Banco de dados                                :white_check_mark:
+      - Curso de Java e JDBC: trabalhando com um banco de dados                                   
+      - Curso de Persistência com JPA: Hibernate                                         
+      - Curso de Java e JPA: consultas avançadas, performance e modelos complexo         
       - Curso de Spring Data JPA: Repositórios, Consultas, Projeções e Specifications                                       
     - Curso de Spring MVC: crie um web app com Thymeleaf e Bootstrap       
     - Curso de Spring MVC: autenticação com Spring Security, API Rest e AJAX
