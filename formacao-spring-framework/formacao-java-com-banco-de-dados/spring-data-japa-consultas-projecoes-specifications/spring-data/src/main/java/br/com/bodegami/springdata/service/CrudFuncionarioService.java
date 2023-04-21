@@ -163,7 +163,7 @@ public class CrudFuncionarioService {
         System.out.println("Qual pagina deseja visualizar: ");
         int page = scanner.nextInt();
 
-        Pageable pageable = PageRequest.of(page, 5, Sort.unsorted());
+        Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.ASC, "salario"));
         Page<Funcionario> funcionarios = funcionarioRepository.findAll(pageable);
 
         System.out.println("Pagina atual :" + funcionarios.getNumber());
