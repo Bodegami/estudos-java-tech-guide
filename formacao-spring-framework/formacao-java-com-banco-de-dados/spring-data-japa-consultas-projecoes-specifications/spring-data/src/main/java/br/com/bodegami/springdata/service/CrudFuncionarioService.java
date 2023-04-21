@@ -6,6 +6,10 @@ import br.com.bodegami.springdata.orm.UnidadeTrabalho;
 import br.com.bodegami.springdata.repository.CargoRepository;
 import br.com.bodegami.springdata.repository.FuncionarioRepository;
 import br.com.bodegami.springdata.repository.UnidadeTrabalhoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -52,7 +56,7 @@ public class CrudFuncionarioService {
                     atualizar(scanner);
                     break;
                 case 3:
-                    visualizar();
+                    visualizar(scanner);
                     break;
                 case 4:
                     deletar(scanner);
@@ -155,9 +159,18 @@ public class CrudFuncionarioService {
         System.out.println("Alterado");
     }
 
-    private void visualizar() {
-        Iterable<Funcionario> funcionarios = funcionarioRepository.findAll();
-        funcionarios.forEach(funcionario -> System.out.println(funcionario));
+    private void visualizar(Scanner scanner) {
+        System.out.println("Qual pagina deseja visualizar: ");
+        int page = scanner.nextInt();
+
+        Pageable pageable = PageRequest.of(page, 5, Sort.unsorted());
+        Page<Funcionario> funcionarios = funcionarioRepository.findAll(pageable);
+
+        System.out.println("Pagina atual :" + funcionarios.getNumber());
+        System.out.println(funcionarios);
+
+        System.out.println("Total elementos: " + funcionarios.getTotalElements());
+        funcionarios.forEach(System.out::println);
     }
 
     private void deletar(Scanner scanner) {
