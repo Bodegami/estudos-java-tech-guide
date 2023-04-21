@@ -13,7 +13,7 @@ public class Funcionario {
     private Integer id;
     private String nome;
     private String cpf;
-    private Double Salario;
+    private Double salario;
     private LocalDate dataContratacao;
 
     @ManyToOne
@@ -51,11 +51,11 @@ public class Funcionario {
     }
 
     public Double getSalario() {
-        return Salario;
+        return salario;
     }
 
     public void setSalario(Double salario) {
-        Salario = salario;
+        salario = salario;
     }
 
     public LocalDate getDataContratacao() {
@@ -88,7 +88,7 @@ public class Funcionario {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
-                ", Salario=" + Salario +
+                ", Salario=" + salario +
                 ", dataContratacao=" + dataContratacao +
                 ", cargo=" + cargo +
                 ", unidadeTrabalhos=" + unidadeTrabalhos +
