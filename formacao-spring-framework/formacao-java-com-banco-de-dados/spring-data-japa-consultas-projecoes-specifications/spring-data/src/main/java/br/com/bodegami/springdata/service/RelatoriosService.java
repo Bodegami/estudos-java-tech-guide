@@ -94,5 +94,4 @@ public class RelatoriosService {
                 f.getId(), f.getNome(), f.getSalario()));
     }
 
-
 }
