@@ -33,12 +33,6 @@ public interface FuncionarioRepository extends PagingAndSortingRepository<Funcio
     List<FuncionarioProjecao> findFuncionarioSalario();
 
 
-
-
-
-
-
-
     /**
      * Exemplos:
      *
