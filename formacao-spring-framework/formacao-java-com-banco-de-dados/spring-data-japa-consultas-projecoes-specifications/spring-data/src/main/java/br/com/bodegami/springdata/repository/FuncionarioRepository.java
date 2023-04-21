@@ -2,6 +2,7 @@ package br.com.bodegami.springdata.repository;
 
 import br.com.bodegami.springdata.orm.Funcionario;
 ;
+import br.com.bodegami.springdata.orm.FuncionarioProjecao;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -25,6 +26,9 @@ public interface FuncionarioRepository extends PagingAndSortingRepository<Funcio
     //Metodo com Native Query
     @Query(value = "SELECT * FROM funcionarios f WHERE f.data_contratacao >= :data", nativeQuery = true)
     List<Funcionario> findDataContratacaoMaior(LocalDate data);
+
+    @Query(value = "SELECT f.id, f.nome, f.salario FROM funcionarios f", nativeQuery = true)
+    List<FuncionarioProjecao> findFuncionarioSalario();
 
 
 
