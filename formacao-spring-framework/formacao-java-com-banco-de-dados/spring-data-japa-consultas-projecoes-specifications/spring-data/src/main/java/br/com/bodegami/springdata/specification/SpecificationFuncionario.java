@@ -26,9 +26,9 @@ public class SpecificationFuncionario {
     }
 
     //consulta pelo criterio de maior que a data de contratacao informada
-    public static Specification<Funcionario> dataContratacao(LocalDate data) {
+    public static Specification<Funcionario> dataContratacao(LocalDate dataContratacao) {
         return (root, criteriaQuery, criteriaBuilder) ->
-                criteriaBuilder.greaterThan(root.get("nome"), data);
+                criteriaBuilder.greaterThan(root.get("dataContratacao"), dataContratacao);
     }
 
 }
