@@ -35,7 +35,7 @@ public class CrudFuncionarioService {
 
     public void inicial(Scanner scanner) {
         while(system) {
-            System.out.println("Qual acao de cargo deseja executar");
+            System.out.println("Qual acao de FUNCIONARIO deseja executar");
             System.out.println("0 - Sair");
             System.out.println("1 - Salvar");
             System.out.println("2 - Atualizar");
@@ -84,26 +84,33 @@ public class CrudFuncionarioService {
 
         List<UnidadeTrabalho> unidades = unidade(scanner);
 
-        Funcionario funcionario = new Funcionario();
-        funcionario.setNome(nome);
-        funcionario.setCpf(cpf);
-        funcionario.setSalario(salario);
-        funcionario.setDataContratacao(LocalDate.parse(dataContratacao, formatter));
-        Optional<Cargo> cargo = cargoRepository.findById(cargoId);
-        funcionario.setCargo(cargo.get());
-        funcionario.setUnidadeTrabalhos(unidades);
 
-        funcionarioRepository.save(funcionario);
-        System.out.println("Salvo");
+
+        try {
+            Funcionario funcionario = new Funcionario();
+            funcionario.setNome(nome);
+            funcionario.setCpf(cpf);
+            funcionario.setSalario(salario);
+            funcionario.setDataContratacao(LocalDate.parse(dataContratacao, formatter));
+            Optional<Cargo> cargo = cargoRepository.findById(cargoId);
+            funcionario.setCargo(cargo.get());
+            funcionario.setUnidadeTrabalhos(unidades);
+
+            funcionarioRepository.save(funcionario);
+            System.out.println("Salvo");
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private List<UnidadeTrabalho> unidade(Scanner scanner) {
-        Boolean isTrue = true;
+        boolean isTrue = true;
         List<UnidadeTrabalho> unidades = new ArrayList<>();
 
         while (isTrue) {
             System.out.println("Digite o unidadeId (Para sair digite 0)");
-            Integer unidadeId = scanner.nextInt();
+            int unidadeId = scanner.nextInt();
 
             if(unidadeId != 0) {
                 Optional<UnidadeTrabalho> unidade = unidadeTrabalhoRepository.findById(unidadeId);
