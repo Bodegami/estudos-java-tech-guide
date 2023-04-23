@@ -6,9 +6,9 @@ services:
     image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: fornecedor
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     volumes:
       - data:/var/lib/mysql
     ports:
