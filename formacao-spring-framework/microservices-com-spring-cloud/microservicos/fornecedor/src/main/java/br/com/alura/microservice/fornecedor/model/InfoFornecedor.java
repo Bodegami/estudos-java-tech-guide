@@ -11,19 +11,11 @@ public class InfoFornecedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	private String nome;
-
+	
 	private String estado;
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
+	
 	private String endereco;
 
 	public Long getId() {
@@ -42,6 +34,14 @@ public class InfoFornecedor {
 		this.nome = nome;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
 	public String getEndereco() {
 		return endereco;
 	}
@@ -49,10 +49,6 @@ public class InfoFornecedor {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
-	@Override
-	public String toString() {
-		return "InfoFornecedor [id=" + id + ", nome=" + nome + ", estado=" + estado + ", endereco=" + endereco + "]";
-	}
-
+	
+	
 }

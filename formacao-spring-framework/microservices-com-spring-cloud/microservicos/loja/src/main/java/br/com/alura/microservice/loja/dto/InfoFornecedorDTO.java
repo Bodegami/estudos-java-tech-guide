@@ -11,5 +11,4 @@ public class InfoFornecedorDTO {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
 }
