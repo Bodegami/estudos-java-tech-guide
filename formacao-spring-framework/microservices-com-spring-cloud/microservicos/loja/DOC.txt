@@ -1,2 +1,5 @@
 Customizando o Load Balancer:
 Link: https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.2.0.M3/reference/html/#customizing-the-default-for-all-ribbon-clients
+
+Sobre o PapperTrail e centralização de logs em microserviços:
+Link: https://www.papertrail.com/help/java-logback-logging/
