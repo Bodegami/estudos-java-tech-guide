@@ -3,10 +3,22 @@ server:
   port: 8888
   
 spring:
-  profiles:
-    active: native  
   cloud:
     config:
       server:
-        native:
-          search-locations: c:/microservice-repo
+        git:
+          default-label: microservice-repo
+          search-paths: fornecedor  
+          uri: https://github.com/Bodegami/poc-spring-cloud-configs
+          username: ${GITHUB_USER}
+          password: ${GITHUB_TOKEN}
+  
+  
+#spring:
+#  profiles:
+#    active: native  
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: c:/microservice-repo
