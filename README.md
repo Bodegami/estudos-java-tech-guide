@@ -62,6 +62,7 @@ File:  [Techguide Java](TECHGUIDE.md)
       - Curso de Spring Data JPA: Repositórios, Consultas, Projeções e Specifications                                       
     - Curso de Spring MVC: crie um web app com Thymeleaf e Bootstrap       
     - Curso de Spring MVC: autenticação com Spring Security, API Rest e AJAX
+	- Curso de Spring Cloud: microservices com spring cloud                              :white_check_mark:
     - Formação Java e Spring Boot 2
       - Curso de Spring Boot 2 API REST: construa uma API
       - Curso de Spring Boot 2 API Rest: Segurança da API, Cache e Monitoramento
