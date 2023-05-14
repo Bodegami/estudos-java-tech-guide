@@ -68,11 +68,16 @@ public class ClienteTarefas {
 		threadRecebeResposta.start();
 		threadEnviaComando.start();
 		
+		// faz que a thread que executa essa linha fica esperando (no nosso caso main). 
+		// só volta a ser executada quando `threadEnviaComando` terminar.
 		threadEnviaComando.join();
 
 		System.out.println("Fechando socket do cliente!");
 		
 		socket.close();
 	}
+	
+	//Vai esperar os 30s e depois vai continuar a execucao do bloco mesmo que a outra Thread não tenha terminado
+	//thread.join(30000);
 
 }

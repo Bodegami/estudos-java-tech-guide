@@ -1,4 +1,4 @@
-package br.com.alura.servidor;
+package br.com.alura.cliente.exemplos;
 
 import java.util.Set;
 
