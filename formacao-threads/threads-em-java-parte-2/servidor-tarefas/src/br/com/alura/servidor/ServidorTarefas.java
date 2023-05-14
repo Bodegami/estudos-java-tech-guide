@@ -12,8 +12,6 @@ public class ServidorTarefas {
 		
 		System.out.println("---- Iniciando o servidor -----");
 		ServerSocket servidor = new ServerSocket(12345);
-		//ExecutorService threadPool = Executors.newFixedThreadPool(2);
-		//ScheduledExecutorService pool = Executors.newScheduledThreadPool(4);
 		ExecutorService threadPool = Executors.newCachedThreadPool();
 		
 		while (true) {
@@ -21,11 +19,17 @@ public class ServidorTarefas {
 			System.out.println("Aceitando novo cliente na porta: " + socket.getPort());
 			
 			DistribuirTarefas distribuirTarefas = new DistribuirTarefas(socket);
-
-			//pool.scheduleAtFixedRate(distribuirTarefas, 0, 60, TimeUnit.MINUTES); //executamos uma tarefa a cada 60 minutos
+			
 			threadPool.execute(distribuirTarefas);
 		}
 		
 	}
+	
+	//Estabelencendo um numero fixo de Threads
+	//ExecutorService threadPool = Executors.newFixedThreadPool(2);
+	
+	//Estabelencendo um numero fixo de threads com schedule para execucao
+	//ScheduledExecutorService pool = Executors.newScheduledThreadPool(4);
+	//pool.scheduleAtFixedRate(distribuirTarefas, 0, 60, TimeUnit.MINUTES); //executamos uma tarefa a cada 60 minutos
 
 }
