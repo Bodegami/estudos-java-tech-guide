@@ -22,7 +22,7 @@ public class ServidorTarefas {
 	public ServidorTarefas() throws IOException {
 		System.out.println("---- Iniciando o servidor -----");
 		this.servidor = new ServerSocket(12345);
-		this.threadPool = Executors.newFixedThreadPool(4);    //newCachedThreadPool();
+		this.threadPool = Executors.newFixedThreadPool(4, new FabricaDeThreads()); //newCachedThreadPool();
 		this.estaRodando = new AtomicBoolean(true);
 	}
 

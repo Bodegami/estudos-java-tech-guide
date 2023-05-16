@@ -36,7 +36,7 @@ public class DistribuirTarefas implements Runnable {
 					case "c1": {
 						saidaCliente.println("Confirmação comando c1");
 						ComandoC1 c1 = new ComandoC1(saidaCliente);
-						threadPool.execute(c1);
+						this.threadPool.execute(c1);
 						break;
 					}
 					case "c2": {
