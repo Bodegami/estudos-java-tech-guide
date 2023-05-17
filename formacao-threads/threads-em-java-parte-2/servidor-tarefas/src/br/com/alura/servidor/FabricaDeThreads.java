@@ -15,6 +15,7 @@ public class FabricaDeThreads implements ThreadFactory {
 		numero++;
 		
 		thread.setUncaughtExceptionHandler(new TratadorDeExcecao());
+		thread.setDaemon(true);
 		return thread;
 	}
 
