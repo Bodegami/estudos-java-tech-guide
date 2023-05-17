@@ -47,7 +47,10 @@ File:  [Techguide Java](TECHGUIDE.md)
 
 <h3>Segunda etapa: </h3>
 
-- <b>Cursos:</b>                
+- <b>Cursos:</b>   
+  - Formação Programação paralela com Threads em Java:                                  :white_check_mark:
+    - Threads em Java 1: programação paralela
+    - Threads em Java 2: programação concorrente avançada    
   - Formação Spring Framework
     - Formação Java Web: crie aplicações com Servlets e MVC                              :white_check_mark:  
       - Curso de Java Servlet: programação web Java                                                                       
@@ -62,7 +65,7 @@ File:  [Techguide Java](TECHGUIDE.md)
       - Curso de Spring Data JPA: Repositórios, Consultas, Projeções e Specifications                                       
     - Curso de Spring MVC: crie um web app com Thymeleaf e Bootstrap       
     - Curso de Spring MVC: autenticação com Spring Security, API Rest e AJAX
-	- Curso de Spring Cloud: microservices com spring cloud                              :white_check_mark:
+	  - Curso de Spring Cloud: microservices com spring cloud                              :white_check_mark:
     - Formação Java e Spring Boot 2
       - Curso de Spring Boot 2 API REST: construa uma API
       - Curso de Spring Boot 2 API Rest: Segurança da API, Cache e Monitoramento
