@@ -18,7 +18,7 @@ public class ComandoC2ChamaWS implements Callable<String> {
 		
 		saida.println("processando comando c2 - WS");
 		
-		Thread.sleep(20000);
+		Thread.sleep(25000);
 		
 		int numero = new Random().nextInt(100) + 1;
 		

@@ -47,8 +47,7 @@ public class DistribuirTarefas implements Runnable {
 						Future<String> futureWS = threadPool.submit(c2WS);
 						Future<String> futureBanco = threadPool.submit(c2Banco);
 						
-						//aqui é o ponto onde ele bloqueia a Thread até recuperar o objeto
-						String resultaWS = futureWS.get();
+						this.threadPool.submit(new JuntaResultadosFutureWSFutureBanco(futureWS, futureBanco, saidaCliente));
 						
 						break;
 					}
