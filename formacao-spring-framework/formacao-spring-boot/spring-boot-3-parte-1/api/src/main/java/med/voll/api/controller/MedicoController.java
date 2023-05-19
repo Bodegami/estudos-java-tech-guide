@@ -12,6 +12,7 @@ public class MedicoController {
 
     @PostMapping
     public DadosCadastroMedico cadastrar(@RequestBody DadosCadastroMedico dados) {
+
         return dados;
     }
 
