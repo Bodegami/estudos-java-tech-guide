@@ -26,7 +26,6 @@ public class MedicoController {
     }
 
     @GetMapping
-    @Transactional
     //O pageable é opcional na requisicao, se for enviado na request o Spring utilizara, caso contrario é usado o default
     public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao) {
         return repository.findAll(paginacao).map(DadosListagemMedico::new);
@@ -39,5 +38,11 @@ public class MedicoController {
     public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
         Medico medico = repository.getReferenceById(dados.id());
         medico.atualizar(dados);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }
