@@ -8,12 +8,11 @@ import med.voll.api.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
@@ -31,8 +30,8 @@ public class MedicoController {
 
     @GetMapping
     @Transactional
-    public Page<DadosListagemMedico> listar(Pageable paginacao) {
+    //O pageable é opcional na requisicao, se for enviado na request o Spring utilizara, caso contrario é usado o default
+    public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao) {
         return repository.findAll(paginacao).map(DadosListagemMedico::new);
     }
-
 }
