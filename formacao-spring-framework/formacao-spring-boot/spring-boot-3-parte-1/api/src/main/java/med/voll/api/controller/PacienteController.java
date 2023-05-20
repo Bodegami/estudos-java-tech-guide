@@ -29,7 +29,7 @@ public class PacienteController {
     @Transactional
     public Page<DadosListagemPaciente> findAll(@PageableDefault(
             size = 2, page = 0, sort = {"cpf"}, direction = Sort.Direction.DESC) Pageable paginacao) {
-        return repository.findAll(paginacao).map(DadosListagemPaciente::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemPaciente::new);
     }
 
     @PutMapping
@@ -42,6 +42,15 @@ public class PacienteController {
     @DeleteMapping(value = "/{id}")
     @Transactional
     public void excluir(@PathVariable Long id) {
-        repository.deleteById(id);
+        Paciente paciente = repository.getReferenceById(id);
+        paciente.excluir();
     }
+
+
+    //Exclusão definitiva do banco de dados
+//    @DeleteMapping(value = "/{id}")
+//    @Transactional
+//    public void excluir(@PathVariable Long id) {
+//        repository.deleteById(id);
+//    }
 }
