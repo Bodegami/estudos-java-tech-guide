@@ -43,7 +43,7 @@ public class Medico {
         this.ativo = true;
     }
 
-    public void atualizar(DadosAtualizacaoMedico dados) {
+    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
         }
