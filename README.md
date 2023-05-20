@@ -71,7 +71,7 @@ File:  [Techguide Java](TECHGUIDE.md)
       - Curso de Spring Boot 2 API Rest: Segurança da API, Cache e Monitoramento
       - Curso de Spring Boot 2 e Teste: Profiles, Testes e Deploy
     - Formação Java e Spring Boot 3
-      - Curso de Spring Boot 3 API REST: construa uma API
+      - Curso de Spring Boot 3 API REST: construa uma API                                :white_check_mark:
       - Curso de Spring Boot 3 API Rest: Segurança da API, Cache e Monitoramento
       - Curso de Spring Boot 3 e Teste: Profiles, Testes e Deploy 
     - Formação Aprofunde em Java com arquitetura de Microsserviços, Spring e RabbitMQ
