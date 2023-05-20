@@ -26,25 +26,27 @@ public class MedicoController {
     }
 
     @GetMapping
-    //O pageable é opcional na requisicao, se for enviado na request o Spring utilizara, caso contrario é usado o default
-    public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao) {
-        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+    public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 10, page = 0, sort = {"nome"}) Pageable paginacao) {
+        Page<DadosListagemMedico> page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping
     @Transactional
-    //Como o metodo é anotado com a @Transactional, a Jpa abre uma transacao ee a partir disso carregamos uma
-    //entidade do banco. Qualquer alteração feita nessa entidade, será comitada no banco quando o metodo encerrar
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
+    public ResponseEntity<DadosDetalhamentoMedico> atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
         Medico medico = repository.getReferenceById(dados.id());
         medico.atualizar(dados);
+
+        return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
     }
 
     @DeleteMapping(value = "/{id}")
     @Transactional
-    public void excluir(@PathVariable Long id) {
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
         var medico = repository.getReferenceById(id);
         medico.excluir();
+
+        return ResponseEntity.noContent().build();
     }
 
     //Exclusão do Banco de dados
