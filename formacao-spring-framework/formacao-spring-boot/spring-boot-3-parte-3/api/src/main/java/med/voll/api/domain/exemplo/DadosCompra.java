@@ -8,7 +8,7 @@ import java.time.LocalDate;
  *
  * A anotação @JsonAlias serve para mapear “apelidos” alternativos para os campos
  * que serão recebidos do JSON, sendo possível atribuir múltiplos alias
- * 
+ *
  */
 
 public record DadosCompra(
