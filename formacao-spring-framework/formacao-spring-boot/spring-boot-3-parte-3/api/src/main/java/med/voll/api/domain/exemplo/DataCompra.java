@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * formatado de acordo com o pattern configurado. Além disso, ela não se
  * restringe apenas à classe LocalDateTime, podendo também ser utilizada
  * em atributos do tipo LocalDate e LocalTime.
- * 
+ *
  */
 
 public record DataCompra(
