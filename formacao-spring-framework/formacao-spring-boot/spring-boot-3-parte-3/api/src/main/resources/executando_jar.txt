@@ -4,3 +4,11 @@
 4 - Excute o comando para em prod: java -Dspring.profiles.active=prod -jar target\api-0.0.1-SNAPSHOT.jar
 4 - Excute o comando para em prod com as variaveis de ambiente:
     java -Dspring.profiles.active=prod -DDATASOURCE_URL=jdbc:mysql://localhost/vollmed_api_prod -DDATASOURCE_USERNAME=root -DDATASOURCE_PASSWORD=root -jar target\api-0.0.1-SNAPSHOT.jar
+
+Executando com imagem do graalVM:
+1 - Abra o terminal
+2 - Navegue até o diretorio "api"
+3 - Execute o comando para gerar o package com imagem do GraalVM: ./mvnw -Pnative native:compile
+
+
+
