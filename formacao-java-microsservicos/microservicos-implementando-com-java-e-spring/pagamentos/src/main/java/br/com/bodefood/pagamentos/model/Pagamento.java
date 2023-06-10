@@ -33,7 +33,7 @@ public class Pagamento {
 
     @Size(max = 19)
     private String numero;
-    
+
     @Size(max = 7)
     private String expiracao;
 
