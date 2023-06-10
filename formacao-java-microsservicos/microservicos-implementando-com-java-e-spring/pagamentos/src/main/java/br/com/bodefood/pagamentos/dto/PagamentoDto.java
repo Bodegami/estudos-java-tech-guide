@@ -3,12 +3,14 @@ package br.com.bodefood.pagamentos.dto;
 import br.com.bodefood.pagamentos.model.Pagamento;
 import br.com.bodefood.pagamentos.model.Status;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class PagamentoDto {
 
     private Long id;
