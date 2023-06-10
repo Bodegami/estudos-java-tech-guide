@@ -5,4 +5,3 @@ if [ ! -d vendor ]; then
 fi
 
 php index.php
-
