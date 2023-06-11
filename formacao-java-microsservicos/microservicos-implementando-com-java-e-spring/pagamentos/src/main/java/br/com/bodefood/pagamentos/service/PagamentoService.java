@@ -64,16 +64,22 @@ public class PagamentoService {
     }
 
     public void confirmarPagamento(Long id){
+        Pagamento pagamento = persistePagamentoNoDB(id, Status.CONFIRMADO);
+        client.atualizaPagamento(pagamento.getPedidoId());
+    }
+
+    public void alteraStatus(Long id) {
+        persistePagamentoNoDB(id, Status.CONFIRMADO_SEM_INTEGRACAO);
+    }
+
+    private Pagamento persistePagamentoNoDB(Long id, Status status) {
         Optional<Pagamento> pagamento = repository.findById(id);
 
         if (!pagamento.isPresent()) {
             throw new EntityNotFoundException();
         }
 
-        pagamento.get().setStatus(Status.CONFIRMADO);
-        repository.save(pagamento.get());
-        client.atualizaPagamento(pagamento.get().getPedidoId());
+        pagamento.get().setStatus(status);
+        return repository.save(pagamento.get());
     }
-
-
 }
