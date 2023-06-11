@@ -39,7 +39,9 @@ public class PagamentoService {
         Pagamento pagamento = repository
                 .findById(id).orElseThrow(() -> new EntityNotFoundException("Pagamento não encontrado!"));
 
-        return new PagamentoDto(pagamento);
+        PagamentoDto dto = new PagamentoDto(pagamento);
+        dto.setItens(client.obterItensDoPedido(pagamento.getPedidoId()).getItens());
+        return dto;
     }
 
     public PagamentoDto criarPagamento(PagamentoDto dto) {

@@ -1,5 +1,6 @@
 package br.com.bodefood.pagamentos.dto;
 
+import br.com.bodefood.pagamentos.model.ItemDoPedido;
 import br.com.bodefood.pagamentos.model.Pagamento;
 import br.com.bodefood.pagamentos.model.Status;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,6 +24,7 @@ public class PagamentoDto {
     private Status status;
     private Long pedidoId;
     private Long formaDePagamentoId;
+    private List<ItemDoPedido> itens;
 
     public PagamentoDto(Pagamento pagamento) {
         this.id = pagamento.getId();
