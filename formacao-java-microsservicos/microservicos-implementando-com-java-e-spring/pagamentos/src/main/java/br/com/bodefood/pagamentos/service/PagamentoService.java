@@ -1,7 +1,9 @@
 package br.com.bodefood.pagamentos.service;
 
 import br.com.bodefood.pagamentos.dto.PagamentoDto;
+import br.com.bodefood.pagamentos.http.PedidoClient;
 import br.com.bodefood.pagamentos.model.Pagamento;
+import br.com.bodefood.pagamentos.model.Status;
 import br.com.bodefood.pagamentos.repository.PagamentoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.BeanUtils;
@@ -10,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 @Service
 public class PagamentoService {
@@ -17,11 +20,14 @@ public class PagamentoService {
     private PagamentoRepository repository;
     private ObjectMapper mapper;
 
+    private PedidoClient client;
 
-    public PagamentoService(PagamentoRepository repository, ObjectMapper mapper) {
+    public PagamentoService(PagamentoRepository repository, ObjectMapper mapper, PedidoClient client) {
         this.repository = repository;
         this.mapper = mapper;
+        this.client = client;
     }
+
 
     public Page<PagamentoDto> obterTodos(Pageable paginacao) {
         return repository
@@ -56,4 +62,18 @@ public class PagamentoService {
     public void excluirPagamento(Long id) {
         repository.deleteById(id);
     }
+
+    public void confirmarPagamento(Long id){
+        Optional<Pagamento> pagamento = repository.findById(id);
+
+        if (!pagamento.isPresent()) {
+            throw new EntityNotFoundException();
+        }
+
+        pagamento.get().setStatus(Status.CONFIRMADO);
+        repository.save(pagamento.get());
+        client.atualizaPagamento(pagamento.get().getPedidoId());
+    }
+
+
 }
