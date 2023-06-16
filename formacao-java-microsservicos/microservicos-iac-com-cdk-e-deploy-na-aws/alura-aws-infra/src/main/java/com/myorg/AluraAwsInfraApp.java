@@ -12,10 +12,14 @@ public class AluraAwsInfraApp {
         App app = new App();
 
         AluraVpcStack vpcStack = new AluraVpcStack(app, "Vpc");
-        AluraClusterStack clusterStack = new AluraClusterStack(app, "Cluster", vpcStack.getVpc());
 
         //indicamos ao cluster que a vpc deve ser provisionada primeiro e depois o cluster
+        AluraClusterStack clusterStack = new AluraClusterStack(app, "Cluster", vpcStack.getVpc());
         clusterStack.addDependency(vpcStack);
+
+        //indicamos ao service que o cluster deve ser provisionado primeiro e depois o service
+        AluraServiceStack aluraServiceStack = new AluraServiceStack(app, "Service", clusterStack.getCluster());
+        aluraServiceStack.addDependency(clusterStack);
 
         app.synth();
 
