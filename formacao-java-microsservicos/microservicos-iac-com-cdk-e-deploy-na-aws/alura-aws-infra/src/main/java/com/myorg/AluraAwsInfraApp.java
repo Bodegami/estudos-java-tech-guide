@@ -24,6 +24,7 @@ public class AluraAwsInfraApp {
         //indicamos ao service que o cluster deve ser provisionado primeiro e depois o service
         AluraServiceStack aluraServiceStack = new AluraServiceStack(app, "Service", clusterStack.getCluster());
         aluraServiceStack.addDependency(clusterStack);
+        aluraServiceStack.addDependency(rdsStack);
 
         app.synth();
 
