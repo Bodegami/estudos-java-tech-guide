@@ -1,0 +1,14 @@
+resilience4j.circuitbreaker.instances.atualizaPedido.slidingWindowSize: 3
+resilience4j.circuitbreaker.instances.atualizaPedido.minimumNumberOfCalls: 2
+resilience4j.circuitbreaker.instances.atualizaPedido.waitDurationInOpenState: 50s
+
+O slidingWindowSize é configuração que vai definir com quantas requisições, o circuit breaker
+consegue fazer uma estatistica para definir o seu status de ABERTO/FECHADO.
+
+O minimumNumberOfCalls é uma propriedade que diz qual o número de chamadas até o circuit breaker
+entrar em ação.
+
+O waitDurationInOpenState é uma propriedade que diz por quanto tempo o circuit breaker deve ficar
+com o status ABERTO até mudar para SEMI-ABERTO e validar se o sistema se estabilizou. Uma vez estabilizado
+o sistema fica com o status FECHADO, caso contrário o sistema fica com o status ABERTO.
+
