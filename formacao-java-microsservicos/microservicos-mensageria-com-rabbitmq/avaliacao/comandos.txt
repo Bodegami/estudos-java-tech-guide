@@ -4,3 +4,8 @@ Ativando a opção de mover mensagens no painel admin.
 2 - executar o comando: rabbitmq-plugins enable rabbitmq_shovel rabbitmq_shovel_management
 3 - acessar o painel do rabbit: http://localhost:15672
 4 - acessar a fila DLQ e na campo move messages, apontar para a fila desejada.
+
+Construcao do docker-compose com cluster RabbitMQ:
+
+Link: https://imasters.com.br/devsecops/clusterizando-rabbitmq-com-docker-compose
+Link: https://kailashyogeshwar.medium.com/rabbitmq-cluster-using-docker-compose-7397ea378d73
