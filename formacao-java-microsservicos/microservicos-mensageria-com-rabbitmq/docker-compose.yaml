@@ -16,18 +16,62 @@ services:
     ports:
       - 3306:3306
 
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: rabbitmq
-    hostname: rabbitmq
+  rabbitmq1:
+    image: rabbitmq:3.10-management-alpine
+    container_name: rabbitmq1
+    hostname: rabbitmq1
     restart: always
     environment:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=123456
+      - RABBITMQ_ERLANG_COOKIE=secret
+      - CLUSTERED=true
     ports:
       - "5672:5672"
-      - "15672:15672"
+      - "8085:15672"
+    networks:
+      - my-networks
+      
+  rabbitmq2:
+    image: rabbitmq:3.10-management-alpine
+    container_name: rabbitmq2
+    hostname: rabbitmq2
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=123456
+      - RABBITMQ_ERLANG_COOKIE=secret
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbitmq1
+      - RAM_NODE=true
+    ports:
+      - "5673:5672"
+      - "8086:15672"
+    networks:
+      - my-networks
+    links:
+      - rabbitmq1
+
+  rabbitmq3:
+    image: rabbitmq:3.10-management-alpine
+    container_name: rabbitmq3
+    hostname: rabbitmq3
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=123456
+      - RABBITMQ_ERLANG_COOKIE=secret
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbitmq1
+    ports:
+      - "5674:5672"
+      - "8087:15672"
+    networks:
+      - my-networks   
+    links:
+      - rabbitmq1
+      - rabbitmq2
 
 networks:
-  default:
+  my-networks:
     driver: bridge
