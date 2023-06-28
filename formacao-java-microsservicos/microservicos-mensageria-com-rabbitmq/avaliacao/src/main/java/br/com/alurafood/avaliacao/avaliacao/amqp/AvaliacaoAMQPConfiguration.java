@@ -34,10 +34,11 @@ public class AvaliacaoAMQPConfiguration {
     public Queue filaDetalhesAvaliacao() {
         return QueueBuilder
                 .nonDurable("pagamentos.detalhes-avaliacao")
-                .deadLetterExchange("pagamentos.dlx")
+                .deadLetterExchange("pagamentos.dlx") //Aponta pa exchange DLX em caso de erro
                 .build();
     }
 
+    //Cria uma fila DLQ
     @Bean
     public Queue filaDlqDetalhesAvaliacao() {
         return QueueBuilder
@@ -52,6 +53,7 @@ public class AvaliacaoAMQPConfiguration {
                 .build();
     }
 
+    // Cria uma DLX
     @Bean
     public FanoutExchange deadLetterExchange() {
         return ExchangeBuilder
@@ -66,6 +68,7 @@ public class AvaliacaoAMQPConfiguration {
                 .to(fanoutExchange());
     }
 
+    //Cria o Bind entre a exchange DLX e a fila DLQ
     @Bean
     public Binding bindDlxPagamentoPedido() {
         return BindingBuilder
