@@ -14,7 +14,7 @@ public class PetService {
     private PetRepository petRepository;
 
     public List<DadosDetalhesPet> listarTodosDisponiveis() {
-        return petRepository.findAllByAdotadoTrue()
+        return petRepository.findAllByAdotadoFalse()
                 .stream().map(DadosDetalhesPet::new).toList();
     }
 
