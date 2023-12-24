@@ -5,7 +5,6 @@ import br.com.alura.adopet.api.dto.ReprovacaoAdocaoDto;
 import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDto;
 import br.com.alura.adopet.api.model.Adocao;
 import br.com.alura.adopet.api.model.Pet;
-import br.com.alura.adopet.api.model.StatusAdocao;
 import br.com.alura.adopet.api.model.Tutor;
 import br.com.alura.adopet.api.repository.AdocaoRepository;
 import br.com.alura.adopet.api.repository.PetRepository;
@@ -14,7 +13,6 @@ import br.com.alura.adopet.api.validacoes.ValidacaoSolicitacaoAdocao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -44,15 +42,8 @@ public class AdocaoService {
         //chamar as validacoes (Patterns Strategy & Chain of Responsability)
         validacoes.forEach(validacao -> validacao.validar(dto));
 
-        Adocao adocao = new Adocao();
-        adocao.setData(LocalDateTime.now());
-        adocao.setStatus(StatusAdocao.AGUARDANDO_AVALIACAO);
-        adocao.setPet(pet);
-        adocao.setTutor(tutor);
-        adocao.setMotivo(dto.motivo());
+        Adocao adocao = new Adocao(tutor, pet, dto.motivo());
 
-        adocao.setData(LocalDateTime.now());
-        adocao.setStatus(StatusAdocao.AGUARDANDO_AVALIACAO);
         adocaoRepository.save(adocao);
 
         emailService.enviarEmail(adocao.getPet().getAbrigo().getEmail(),
@@ -66,7 +57,7 @@ public class AdocaoService {
 
         Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao());
 
-        adocao.setStatus(StatusAdocao.APROVADO);
+        adocao.marcarComoAprovado();
 
         //Como estamos carregando um entidade do database, qualquer mudança na entidade será salva no database
         //adocaoRepository.save(adocao);
@@ -84,8 +75,7 @@ public class AdocaoService {
 
         Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao());
 
-        adocao.setStatus(StatusAdocao.REPROVADO);
-        adocao.setJustificativaStatus(dto.justificava());
+        adocao.marcarComoReprovada(dto.justificava());
 
         //Como estamos carregando um entidade do database, qualquer mudança na entidade será salva no database
         //adocaoRepository.save(adocao);
