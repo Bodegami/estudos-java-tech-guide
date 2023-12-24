@@ -2,9 +2,6 @@ package br.com.alura.adopet.api.model;
 
 import br.com.alura.adopet.api.dto.TutorDto;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,15 +14,10 @@ public class Tutor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String nome;
 
-    @NotBlank
-    @Pattern(regexp = "\\(?\\d{2}\\)?\\d?\\d{4}-?\\d{4}")
     private String telefone;
 
-    @NotBlank
-    @Email
     private String email;
 
     //Em casos ToMany, por padrao as listas com o relacionamento tem o carregamento FetchType.LAZY
