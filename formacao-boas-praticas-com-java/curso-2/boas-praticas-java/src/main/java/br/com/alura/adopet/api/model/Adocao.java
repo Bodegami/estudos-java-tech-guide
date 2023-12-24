@@ -15,10 +15,11 @@ public class Adocao {
 
     private LocalDateTime data;
 
-    @ManyToOne
+    //Em casos ToOne, por padrao o carregamento do relacionamento é FetchType.EAGER
+    @ManyToOne(fetch = FetchType.LAZY)
     private Tutor tutor;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Pet pet;
 
     private String motivo;
