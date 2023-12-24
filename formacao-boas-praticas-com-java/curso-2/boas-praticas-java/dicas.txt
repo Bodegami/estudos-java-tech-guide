@@ -1,0 +1,16 @@
+Links úteis com explicações e exemplos sobre design patterns:
+
+1 - [Refactoring Guru]:
+    Um excelente site com explicações detalhadas e exemplos de padrões de projeto,
+    além de também ensinar bastante sobre refatoração de códigos;
+    Link: https://refactoring.guru/pt-br/design-patterns
+
+2 - [TutorialsPoint]:
+    Oferece tutoriais abrangentes sobre padrões de projeto em Java;
+    Link: https://www.tutorialspoint.com/design_pattern/index.htm
+
+3 - [Repositório no GitHub]:
+    Um repositório que contém uma ampla coleção de implementações de padrões de projeto em Java.
+    Link: https://github.com/iluwatar/java-design-patterns
+
+
