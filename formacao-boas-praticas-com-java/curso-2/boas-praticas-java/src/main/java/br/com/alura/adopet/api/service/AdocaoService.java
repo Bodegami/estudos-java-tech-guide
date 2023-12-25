@@ -12,6 +12,7 @@ import br.com.alura.adopet.api.repository.TutorRepository;
 import br.com.alura.adopet.api.validacoes.ValidacaoSolicitacaoAdocao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -52,11 +53,15 @@ public class AdocaoService {
 //                        ". \nFavor avaliar para aprovação ou reprovação.");
     }
 
+    @Transactional
     public void aprovar(AprovacaoAdocaoRequest dto) {
 
         Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao());
 
         adocao.marcarComoAprovado();
+        adocao.getPet().setAdotado(true);
+
+        adocaoRepository.save(adocao);
 
         //Como estamos carregando um entidade do database, qualquer mudança na entidade será salva no database
         //adocaoRepository.save(adocao);
@@ -70,9 +75,11 @@ public class AdocaoService {
 //                        " para agendar a busca do seu pet.");
     }
 
+    @Transactional
     public void reprovar(ReprovacaoAdocaoRequest dto) {
 
         Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao());
+        adocao.getPet().setAdotado(false);
 
         adocao.marcarComoReprovada(dto.justificativa());
 

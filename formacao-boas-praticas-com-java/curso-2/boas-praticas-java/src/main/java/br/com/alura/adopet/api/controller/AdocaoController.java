@@ -30,14 +30,12 @@ public class AdocaoController {
     }
 
     @PutMapping("/aprovar")
-    @Transactional
     public ResponseEntity<String> aprovar(@RequestBody @Valid AprovacaoAdocaoRequest dto) {
-        this.adocaoService.aprovar(dto);
+        adocaoService.aprovar(dto);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/reprovar")
-    @Transactional
     public ResponseEntity<String> reprovar(@RequestBody @Valid ReprovacaoAdocaoRequest dto) {
         this.adocaoService.reprovar(dto);
         return ResponseEntity.ok().build();
