@@ -1,6 +1,6 @@
 package br.com.alura.adopet.api.validacoes;
 
-import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDto;
+import br.com.alura.adopet.api.dto.SolicitacaoAdocaoRequest;
 import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.model.StatusAdocao;
 import br.com.alura.adopet.api.repository.AdocaoRepository;
@@ -11,7 +11,7 @@ public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoA
     @Autowired
     private AdocaoRepository adocaoRepository;
 
-    public void validar(SolicitacaoAdocaoDto dto) {
+    public void validar(SolicitacaoAdocaoRequest dto) {
         boolean tutorTemOutraAdocaoEmAndamento = adocaoRepository.existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO);
         if (tutorTemOutraAdocaoEmAndamento) {
             throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");

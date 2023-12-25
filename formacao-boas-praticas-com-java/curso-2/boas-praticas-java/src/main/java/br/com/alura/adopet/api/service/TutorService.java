@@ -1,6 +1,6 @@
 package br.com.alura.adopet.api.service;
 
-import br.com.alura.adopet.api.dto.TutorDto;
+import br.com.alura.adopet.api.dto.TutorRequest;
 import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.model.Tutor;
 import br.com.alura.adopet.api.repository.TutorRepository;
@@ -15,7 +15,7 @@ public class TutorService {
     private TutorRepository tutorRepository;
 
     @Transactional
-    public void cadastrar(TutorDto dto) {
+    public void cadastrar(TutorRequest dto) {
         boolean isAlreadyExists = tutorRepository.existsByTelefoneOrEmail(dto.telefone(), dto.email());
 
         if (isAlreadyExists) {
@@ -26,7 +26,7 @@ public class TutorService {
     }
 
     @Transactional
-    public void atualizar(TutorDto dto) {
+    public void atualizar(TutorRequest dto) {
         boolean isAlreadyExists = tutorRepository.existsByTelefoneOrEmail(dto.telefone(), dto.email());
 
         if (isAlreadyExists) {

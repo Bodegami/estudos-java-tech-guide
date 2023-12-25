@@ -1,6 +1,6 @@
 package br.com.alura.adopet.api.model;
 
-import br.com.alura.adopet.api.dto.TutorDto;
+import br.com.alura.adopet.api.dto.TutorRequest;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class Tutor {
 
     public Tutor() {}
 
-    public Tutor(TutorDto dto) {
+    public Tutor(TutorRequest dto) {
         this.id = dto.id();
         this.nome = dto.nome();
         this.telefone = dto.telefone();

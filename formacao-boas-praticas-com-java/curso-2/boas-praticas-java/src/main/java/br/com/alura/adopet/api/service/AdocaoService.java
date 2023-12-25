@@ -1,8 +1,8 @@
 package br.com.alura.adopet.api.service;
 
-import br.com.alura.adopet.api.dto.AprovacaoAdocaoDto;
-import br.com.alura.adopet.api.dto.ReprovacaoAdocaoDto;
-import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDto;
+import br.com.alura.adopet.api.dto.AprovacaoAdocaoRequest;
+import br.com.alura.adopet.api.dto.ReprovacaoAdocaoRequest;
+import br.com.alura.adopet.api.dto.SolicitacaoAdocaoRequest;
 import br.com.alura.adopet.api.model.Adocao;
 import br.com.alura.adopet.api.model.Pet;
 import br.com.alura.adopet.api.model.Tutor;
@@ -33,7 +33,7 @@ public class AdocaoService {
     @Autowired
     private List<ValidacaoSolicitacaoAdocao> validacoes;
 
-    public void solicitar(SolicitacaoAdocaoDto dto) {
+    public void solicitar(SolicitacaoAdocaoRequest dto) {
 
         Pet pet = petRepository.getReferenceById(dto.idPet());
         Tutor tutor = tutorRepository.getReferenceById(dto.idTutor());
@@ -52,7 +52,7 @@ public class AdocaoService {
 //                        ". \nFavor avaliar para aprovação ou reprovação.");
     }
 
-    public void aprovar(AprovacaoAdocaoDto dto) {
+    public void aprovar(AprovacaoAdocaoRequest dto) {
 
         Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao());
 
@@ -70,7 +70,7 @@ public class AdocaoService {
 //                        " para agendar a busca do seu pet.");
     }
 
-    public void reprovar(ReprovacaoAdocaoDto dto) {
+    public void reprovar(ReprovacaoAdocaoRequest dto) {
 
         Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao());
 
