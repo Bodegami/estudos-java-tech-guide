@@ -39,4 +39,30 @@ class CalculadoraProbabilidadeAdocaoTest {
 
     }
 
+    @Test
+    void cenario02() {
+        // idade 15 anos e 4 kg - ALTA
+
+        Abrigo abrigo = new Abrigo(new CadastroAbrigoDto(
+                "Abrigo feliz",
+                "94999999999",
+                "abrigofeliz@email.com.br"
+        ));
+        Pet pet = new Pet(new CadastroPetDto(
+                TipoPet.GATO,
+                "Miau",
+                "Siames",
+                15,
+                "Cinza",
+                4.0f
+        ), abrigo);
+
+        CalculadoraProbabilidadeAdocao calculadora = new CalculadoraProbabilidadeAdocao();
+        ProbabilidadeAdocao probabilidade = calculadora.calcular(pet);
+
+        assertNotNull(probabilidade);
+        assertEquals(ProbabilidadeAdocao.MEDIA, probabilidade);
+
+    }
+
 }
