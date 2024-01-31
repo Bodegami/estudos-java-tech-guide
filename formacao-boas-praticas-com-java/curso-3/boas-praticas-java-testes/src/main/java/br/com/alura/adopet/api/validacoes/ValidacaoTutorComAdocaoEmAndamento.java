@@ -28,6 +28,10 @@ public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoA
             if (a.getTutor() == tutor && a.getStatus() == StatusAdocao.AGUARDANDO_AVALIACAO) {
                 throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");
             }
+
+            if (a.getTutor() == tutor && a.getStatus() == StatusAdocao.REPROVADO) {
+                throw new ValidacaoException("Tutor bloqueado para adocao de pets!");
+            }
         }
     }
 
