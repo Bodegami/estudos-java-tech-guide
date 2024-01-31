@@ -1,14 +1,13 @@
 package br.com.alura.adopet.api.controller;
 
+import br.com.alura.adopet.api.service.AdocaoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -19,6 +18,9 @@ class AdocaoControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @MockBean
+    private AdocaoService adocaoService;
 
     @Test
     void deveriaDevolverCodigo400ParaSolicitacaoDeAdocaoComErros() throws Exception {
@@ -35,6 +37,31 @@ class AdocaoControllerTest {
         //ASSERT
         assertEquals(400, response.getStatus());
 
+    }
+
+    @Test
+    void deveriaDevolverCodigo200ParaSolicitacaoDeAdocaoSemErros() throws Exception {
+        //ARRANGE
+        String json = """
+                {
+                    "idPet": 1,
+                    "idTutor": 1,
+                    "motivo": "Motivo qualquer"
+                }
+                """;
+
+        String expectedResponse = "Adoção solciitada com sucesso!";
+
+        //ACT
+        var response = mvc.perform(
+                post("/adocoes")
+                        .content(json)
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andReturn().getResponse();
+
+        //ASSERT
+        assertEquals(200, response.getStatus());
+        assertEquals(expectedResponse, response.getContentAsString());
     }
 
 }
