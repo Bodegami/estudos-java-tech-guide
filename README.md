@@ -66,7 +66,7 @@ File:  [Techguide Java](TECHGUIDE.md)
     - Curso de Spring MVC: crie um web app com Thymeleaf e Bootstrap       
     - Curso de Spring MVC: autenticação com Spring Security, API Rest e AJAX
     - Curso de Spring Cloud: microservices com spring cloud                              :white_check_mark:
-    - Formação Java e Spring Boot 2
+    - Formação Java e Spring Boot 2                                                      :white_check_mark:
       - Curso de Spring Boot 2 API REST: construa uma API
       - Curso de Spring Boot 2 API Rest: Segurança da API, Cache e Monitoramento
       - Curso de Spring Boot 2 e Teste: Profiles, Testes e Deploy
@@ -74,11 +74,15 @@ File:  [Techguide Java](TECHGUIDE.md)
       - Curso de Spring Boot 3 API REST: construa uma API                                
       - Curso de Spring Boot 3 API Rest: Segurança da API, Cache e Monitoramento
       - Curso de Spring Boot 3 e Teste: Profiles, Testes e Deploy 
-    - Formação Aprofunde em Java com arquitetura de Microsserviços, Spring e RabbitMQ
+    - Formação Aprofunde em Java com arquitetura de Microsserviços, Spring e RabbitMQ    :white_check_mark:
       - Curso de Microsserviços na prática: entendendo a tomada de decisões
       - Curso de Microsserviços na prática: implementando com Java e Spring
       - Curso de Microsserviços na prática: IaC com CDK e deploy na AWS
       - Curso de Microsserviços na prática: mensageria com RabbitMQ
+    - Formação Boas práticas com Java                                                    :white_check_mark:
+      - Curso de Java e refatoração: melhorando códigos com boas práticas
+      - Curso de Boas práticas: melhore o código de uma API java
+      - Curso de Boas práticas: automatizando testes com java
    
   
 - <b>Desafio:</b>
